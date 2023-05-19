@@ -1,0 +1,76 @@
+<div id="dropdownMenu" class="sidebar-nav d-flex flex-column px-0 pt-2 text-white min-vh-100">
+
+  <ul class="nav sidebar-nav-container flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start w-100" id="menu">
+    <li class="nav-item sidebar-menuitem">
+      <a href="#" class="menuLink nav-link align-middle px-0">
+        <fa-icon [icon]="faHouse"></fa-icon> <span class="menu-text ms-1 ">Home</span>
+      </a>
+    </li>
+    <li class="sidebar-menuitem">
+      <a routerLink="/home" routerLinkActive="active" class="menuLink nav-link px-0 align-middle">
+        <fa-icon [icon]="faFolderTree"></fa-icon> <span class="menu-text ms-1 ">Manage Hierarchy</span></a>
+    </li>
+    <li class="sidebar-menuitem">
+      <a href="#" class="menuLink nav-link px-0 align-middle">
+        <fa-icon [icon]="faUsers"></fa-icon> <span class="menu-text ms-1 ">Manage Users</span> </a>
+    </li>
+    <li class="sidebar-menuitem">
+      <a routerLink="/collect-data" routerLinkActive="active" class="menuLink nav-link px-0 align-middle">
+        <fa-icon [icon]="faPlus"></fa-icon> <span class="menu-text ms-1 ">Collect Data</span> </a>
+    </li>
+    <li class="sidebar-menuitem">
+      <a href="#" class="menuLink nav-link px-0 align-middle">
+        <fa-icon [icon]="faChartArea"></fa-icon> <span class="menu-text ms-1 ">Analyze Data</span> </a>
+    </li>
+    <li role="menuitem" class="sidebar-menuitem">
+      <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle menuLink">
+        <i class="fas fa-chart-area"></i>
+        <span class="menu-text-group">
+        <span class="ms-1 d-sm-inline">Analyze</span><i class="fa fa-chevron-down"></i>
+      </span>
+      </a>
+      <ul role="menu" class="collapse show flex-column ms-1 sidebar-submenu-container list-unstyled ps-1"
+          id="submenu2" data-bs-parent="#menu">
+        <li role="menuitem" class="sidebar-submenuitem">
+          <a href="#" class="nav-link px-0 menuLink">
+            <i class="fa fa-chart-pie"></i><span class="d-sm-inline menu-text">Utilization </span>
+          </a>
+        </li>
+        <li role="menuitem" class="sidebar-submenuitem">
+          <a href="#" class="nav-link px-0  menuLink">
+            <i class="fa fa-chart-line"></i><span class="d-sm-inline menu-text">Surveys </span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+  </ul>
+
+</div><!--dropdownMenu-->
+
+<!--<ul class="nav nav-pills flex-column w-100" id="menu">
+  <li class="nav-item w-100">
+    <a routerLink="/assessment/home" class="nav-link active">
+      <fa-icon [icon]="faHouse"></fa-icon> <span class="ms-2 d-sm-inline">Assessments Home</span>
+    </a>
+  </li>
+
+  <li>
+    <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-3 mx-0 align-middle text-white">
+      <fa-icon [icon]="faFolderOpen"></fa-icon> <span class="ms-2 d-sm-inline">Manage Assessments</span> </a>
+    <ul class="collapse show nav flex-column" id="submenu1" data-bs-parent="#menu">
+      <li class="">
+        <a href="#" class="nav-link ps-4 text-white"> <span class="d-sm-inline me-1">Data Collection</span> <i class="fa-solid fa-plus"></i> </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link ps-4 text-white"> <span class="d-sm-inline me-1">Basic Analysis</span> <i class="fa-solid fa-users-viewfinder"></i> </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link ps-4 text-white"> <span class="d-sm-inline me-1">Approval Review</span> <i class="fa-solid fa-users-viewfinder"></i> </a>
+      </li>
+      <li>
+        <a href="#" class="nav-link ps-4 text-white"> <span class="d-sm-inline me-1">Concluded</span> <i class="fa-solid fa-users-viewfinder"></i> </a>
+      </li>
+    </ul>
+  </li>
+</ul>-->
