@@ -17,8 +17,8 @@ const providers: Provider[] = [];
     AppComponent,
     AssessmentHomeComponent,
     ManageAssessmentComponent,
-    CollectDataComponent,
-    CMHomeComponent
+    CollectDataComponent
+    //CMHomeComponent
   ],
     imports: [
         BrowserModule,

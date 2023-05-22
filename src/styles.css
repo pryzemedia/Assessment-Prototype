@@ -420,9 +420,9 @@ th[sortable] {
   background: #f6bb4e;
 }
 
-.main-content .row{
+/*.main-content .row{
   padding: 1rem;
-}
+}*/
 
 /*===================================SMS(CM)==============================*/
 /*.sidebar-sms .nav-pills .nav-link.active, .sidebar-sms .nav-pills .show>.nav-link, .sidebar-sms .nav-link.active, .sidebar-sms .show>.nav-link {
@@ -432,6 +432,22 @@ th[sortable] {
 .sidebar-sms div a:active, .sidebar-sms div ul li a:active,  div a.active, .sidebar-sms div ul li a.active{
 	border-left:  5px solid #e88524;
 }*/
+
+/*Submenu*/
+.sidebar-menuitem .fa-chevron-down {
+  transition: .3s transform ease-in-out;
+}
+
+.sidebar-menuitem .collapsed .fa-chevron-down {
+  transform: rotate(-90deg);
+}
+
+.sidebar-nav .sidebar-menuitem .menuLink i:last-child, .sidebar-nav .sidebar-menuitem .menuLink fa-icon:last-child {
+  position: absolute;
+  right: 15px;
+  top: 12px;
+  font-size: 15px;
+}
 
 
 .sms-dark-header{
@@ -467,6 +483,7 @@ th[sortable] {
 .wrapper {
   width: 100%;
   min-height: 100%;
+  overflow-x: hidden;;
 }
 #sidebar-header #logo {
   margin: 12px 0;

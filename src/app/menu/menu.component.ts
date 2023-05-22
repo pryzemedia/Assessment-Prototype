@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {faFolderTree, faHouse, faUsers, faPlus, faChartArea } from '@fortawesome/free-solid-svg-icons';
+import {faFolderTree, faHouse, faUsers, faPlus, faChartArea, faChevronDown, faChartPie, faChartLine } from '@fortawesome/free-solid-svg-icons';
 import {faFolderOpen} from "@fortawesome/free-regular-svg-icons";
 import {munuSubLinks} from "./menu-interface";
-import {NgbCollapse} from "@ng-bootstrap/ng-bootstrap";
+import {CommonModule} from "@angular/common";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {RouterLink, RouterLinkActive} from "@angular/router";
+//import {NgbCollapse} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-menu',
+  standalone: true,
+  imports: [CommonModule, FontAwesomeModule, RouterLink, RouterLinkActive],
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
@@ -19,6 +24,9 @@ export class MenuComponent implements OnInit {
   faFolderTree = faFolderTree;
   faFolderOpen = faFolderOpen;
   faPlus = faPlus;
+  faChevronDown = faChevronDown;
+  faChartPie = faChartPie;
+  faChartLine = faChartLine;
   faChartArea = faChartArea;
 
   public isCollapsed = false;

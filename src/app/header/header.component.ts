@@ -1,8 +1,14 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {faAngleLeft, faAngleRight, faBars} from "@fortawesome/free-solid-svg-icons";
+import {CommonModule} from "@angular/common";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {MenuComponent} from "../menu/menu.component";
+import {TopBarComponent} from "./top-bar/top-bar.component";
 
 @Component({
   selector: 'app-header',
+  standalone: true,
+  imports: [CommonModule, MenuComponent, TopBarComponent, FontAwesomeModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
