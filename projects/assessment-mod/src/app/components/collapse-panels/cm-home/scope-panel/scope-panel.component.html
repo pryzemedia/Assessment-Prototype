@@ -9,6 +9,17 @@
       </div>
       <div class="category-bg collapse show" id="collapse-1" style="">
         <div class="row">
+          <div class="col-md-12 col-xl-4 mb-2">
+            <app-hierarchy-panel></app-hierarchy-panel>
+            <app-generic-panel
+            [colorTheme]="'blue'"
+            [cardID]="'detailHeader01'"
+            [typeOfContent]="'list'"
+            [dynamicContent]="reportList"
+            [buttons]="true"
+            [buttonList]="reportButtons"
+            ></app-generic-panel>
+          </div>
 
         </div>
       </div>

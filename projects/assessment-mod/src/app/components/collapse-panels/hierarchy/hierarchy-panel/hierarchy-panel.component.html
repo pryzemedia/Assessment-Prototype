@@ -1,1 +1,54 @@
-<p>hierarchy-panel works!</p>
+<div class="card mb-2">
+  <div class="card-header blue-header">
+    <a data-bs-toggle="collapse" href="#collapseNode"
+       role="button" aria-expanded="false" aria-controls="collapseNode"
+       class="d-flex justify-content-between">
+      <span>
+        <fa-icon [icon]="faCheckCircle"></fa-icon>
+        &nbsp; Organizational Hierarchy
+      </span>
+      <fa-icon [icon]="faChevronDown"></fa-icon>
+    </a>
+  </div>
+  <div id="collapseNode" class="collapse show">
+    <div class="card-body">
+      <div class="row p-2 border border-dark">
+        <div class="col-auto"><label class="col-form-label">Search Node</label></div>
+        <div class="col"><input type="text" class="form-control border border-dark"></div>
+        <div class="col-auto"><button class="btn btn-blue-fill ps-2 pe-2" type="button">Search</button></div>
+      </div>
+      <div class="row p-2 border border-top-0 border-dark">
+        <div class="col"><button class="btn btn-light btn-sm" type="button">
+          <fa-icon [icon]="faPlusSquare"></fa-icon>
+          &nbsp;Create New</button>
+        </div>
+        <div class="col"><button class="btn btn-light btn-sm" type="button">
+          <fa-icon [icon]="faMinusSquare"></fa-icon>
+          &nbsp;Delete Node</button>
+        </div>
+        <div class="col"><button class="btn btn-light btn-sm" type="button">
+          <fa-icon [icon]="faIndent"></fa-icon>
+          &nbsp;Enter Node</button>
+        </div>
+        <div class="col">
+          <button class="btn btn-light btn-sm" type="button">
+            <fa-icon [icon]="faEdit"></fa-icon>
+            &nbsp;Edit Node</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col p-2 border border-top-0 border-dark">
+
+          <div id="treeview1" class="treeview"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col mt-3">
+          <button class="btn btn-link">View / Update Organizational Hierarchy, Including Adding Assets</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
