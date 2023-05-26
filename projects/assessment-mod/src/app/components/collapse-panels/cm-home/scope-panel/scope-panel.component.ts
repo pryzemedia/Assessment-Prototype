@@ -5,11 +5,12 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import {HierarchyPanelComponent} from "../../hierarchy/hierarchy-panel/hierarchy-panel.component";
 import {GenericPanelComponent} from "../../reusable/generic-panel/generic-panel.component";
 import {buttonList, reportList} from "../../data/panel-options-interface";
+import {BarChartComponent} from "../../reusable/chart-panel/bar-chart/bar-chart.component";
 
 @Component({
   selector: 'app-scope-panel',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule, HierarchyPanelComponent, GenericPanelComponent],
+  imports: [CommonModule, FontAwesomeModule, HierarchyPanelComponent, GenericPanelComponent, BarChartComponent],
   templateUrl: './scope-panel.component.html',
   styleUrls: ['./scope-panel.component.css']
 })
@@ -18,6 +19,7 @@ export class ScopePanelComponent {
 
   reportList: reportList[] = [];
   reportButtons: buttonList[] = [];
+  programButtons: buttonList[] = [];
 
 
 
@@ -60,25 +62,40 @@ export class ScopePanelComponent {
         icon: "",
         btnColor: "btn-blue-fill",
         btnClass: "",
-        link: "#",
+        link: "",
         btnText: "Quick Reports"
       },
       {
         icon: "",
         btnColor: "btn-blue-fill",
         btnClass: "",
-        link: "#",
+        link: "",
         btnText: "Analytics Dashboard"
       }
-    ]
+    ];
+
+    this.programButtons = [
+      {
+        icon: "",
+        btnColor: "btn-blue-fill",
+        btnClass: "",
+        link: "",
+        btnText: "View Details"
+      }
+    ];
   }
 
   reportsBtn1Action(params:any){
-    console.log('Button 1 Clicked with parameter passed = ' + params);
+    console.log('Reports Button 1 Clicked with parameter passed = ' + params);
   }
   reportsBtn2Action(params:any){
-    console.log('Button 1 Clicked with parameter passed = ' + params);
+    console.log('Reports Button 2 Clicked with parameter passed = ' + params);
   }
+
+  programBtn1Action(params:any){
+    console.log('Program Button 1 Clicked with parameter passed = ' + params);
+  }
+
   ngOnInit(): void{
     this.initReportList();
   }

@@ -14,6 +14,7 @@ import {MatIconModule} from "@angular/material/icon";
 import {HttpClientModule} from "@angular/common/http";
 //import { TopBarComponent } from './header/top-bar/top-bar.component';
 import {HeaderComponent} from "./header/header.component";
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import {HeaderComponent} from "./header/header.component";
     BrowserAnimationsModule,
     MatIconModule,
     HttpClientModule,
-    HeaderComponent
+    HeaderComponent,
+    NgChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

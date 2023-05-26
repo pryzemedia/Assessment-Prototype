@@ -26,6 +26,23 @@
             </app-generic-panel>
           </div>
 
+          <div class="col-12 col-md-6 col-xl-4 mb-2">
+            <div class="row mb-2">
+              <div class="col">
+                <app-bar-chart
+                  [headerText]="'Number of Assessments'"
+                  [colorTheme]="'purple'"
+                  [cardID]="'program01'"
+                  [buttons]="true"
+                  [buttonList]="programButtons"
+                  (btn1_Action)="programBtn1Action($event)"
+                >
+
+                </app-bar-chart>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

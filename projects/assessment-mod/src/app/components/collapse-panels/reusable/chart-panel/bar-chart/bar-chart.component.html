@@ -17,10 +17,18 @@
 
     <div class="card-body">
       <div id="{{reportDataID}}" class="">
-        <div class="row mb-2" *ngFor="let dc of dynamicContent">
+        <div class="row mb-2" >
           <div class="col">
             <!-- Canvas here-->
-
+            <!--suppress TypeScriptValidateTypes -->
+            <canvas baseChart class="chart"
+                    [data]="barChartData"
+                    [options]="barChartOptions"
+                    [plugins]="barChartPlugins"
+                    [type]="barChartType"
+                    (chartHover)="chartHovered($event)"
+                    >
+            </canvas>
           </div>
         </div>
         <div *ngIf="buttons" class=" buttonList-length {{buttonList.length}}">
