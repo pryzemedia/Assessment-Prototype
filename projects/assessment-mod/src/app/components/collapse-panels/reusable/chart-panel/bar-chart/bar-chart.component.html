@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-header {{headerClass}}">
+    <a data-bs-toggle="collapse" href="#{{cardID}}" role="button"
+       aria-expanded="false" aria-controls="" class="d-flex justify-content-between">
+      <span>
+        <fa-icon [icon]="faChartBar" class="me-2"></fa-icon>
+        {{headerText}}
+      </span>
+      <fa-icon [icon]="faChevronDown"></fa-icon>
+    </a>
+  </div>
+
+  <div id="{{cardID}}" class="collapse show">
+    <div id="{{reportMsgID}}" class="visible">
+      <h3 class="mt-2 ms-2">No node selected. Select a node to continue.</h3>
+    </div>
+
+    <div class="card-body">
+      <div id="{{reportDataID}}" class="">
+        <div class="row mb-2" *ngFor="let dc of dynamicContent">
+          <div class="col">
+            <!-- Canvas here-->
+
+          </div>
+        </div>
+        <div *ngIf="buttons" class=" buttonList-length {{buttonList.length}}">
+          <div *ngIf="buttonList.length > 1;">
+            <div class="row d-flex justify-content-between px-2 my-2">
+              <div *ngFor="let b1 of buttonList; index as i" class="col-auto mt-2 ">
+                <button class="btn {{b1.btnColor}} {{b1.btnClass}}" (click)="emitBtn1Action('Button One' + b1 + ' Parameter '+ i)">{{b1.btnText}}</button>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="buttonList.length < 2;">
+            <div class="row d-flex justify-content-center">
+              <div *ngFor="let b2 of buttonList; index as i" class="col-auto mt-2 ">
+                <button class="btn {{b2.btnColor}} {{b2.btnClass}}" (click)="emitBtn2Action('Button Two Parameter ' + i)">{{b2.btnText}}</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div><!--reportData-->
+    </div>
+  </div>
+
+</div>

@@ -1,25 +1,23 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, Input, ViewChild, OnInit, Output, EventEmitter} from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {ChartConfiguration, ChartData, ChartEvent, ChartType} from "chart.js";
+import {BaseChartDirective, NgChartsModule} from "ng2-charts";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-import { faChevronDown, faFileExcel, faFilePdf, faFileWord, faList } from '@fortawesome/free-solid-svg-icons';
-import {reportList} from "../../data/panel-options-interface";
-import {HttpClient, HttpClientModule} from "@angular/common/http";
+import { faChartBar, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+
+
 
 @Component({
-  selector: 'app-generic-panel',
+  selector: 'app-bar-chart',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule, HttpClientModule],
-  templateUrl: './generic-panel.component.html',
-  styleUrls: ['./generic-panel.component.css']
+  imports: [CommonModule, FontAwesomeModule, NgChartsModule],
+  templateUrl: './bar-chart.component.html',
+  styleUrls: ['./bar-chart.component.css']
 })
-export class GenericPanelComponent {
+export class BarChartComponent {
 
-  faList = faList;
+  faChartBar = faChartBar;
   faChevronDown = faChevronDown;
-  faFileWord = faFileWord;
-  faFileExcel = faFileExcel;
-  faFilePdf = faFilePdf;
-
 
   @Input() headerText: string = "List of Reports"; //Text that goes in the header
   @Input() colorTheme:string = "blue"; //red, lt-red, blue, green, purple, dark
@@ -35,13 +33,10 @@ export class GenericPanelComponent {
   @Output() btn2_Action: EventEmitter<any> = new EventEmitter<any>();
 
   headerClass: string = "blue-header";
-  //iconHeader: string = "";
   reportMsgID: string = "";
   reportDataID: string = "";
 
-  constructor (private httpService: HttpClient) { }
 
-  //dynamicContent:any[] = [];
 
   emitBtn1Action(params: any){
     //creates an instance of this if more than one button is used
@@ -79,11 +74,7 @@ export class GenericPanelComponent {
 
     this.reportMsgID = this.cardID + 'Msg';
     this.reportDataID = this.cardID + 'Data';
-    /*this.httpService.get('./assets/json-data/report-list.json').subscribe({
-      next: data => {
-        this.dynamicContent = data as reportList [];
-      }
-    })*/
+
   }
 
 }
