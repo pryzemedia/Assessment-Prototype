@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import {HierarchyPanelComponent} from "../../hierarchy/hierarchy-panel/hierarchy-panel.component";
-import {GenericPanelComponent} from "../../generic/generic-panel/generic-panel.component";
-import {buttonList, reportList} from "../../generic/generic-panel/data/panel-options-interface";
+import {GenericPanelComponent} from "../../reusable/generic-panel/generic-panel.component";
+import {buttonList, reportList} from "../../data/panel-options-interface";
 
 @Component({
   selector: 'app-scope-panel',
@@ -73,6 +73,12 @@ export class ScopePanelComponent {
     ]
   }
 
+  reportsBtn1Action(params:any){
+    console.log('Button 1 Clicked with parameter passed = ' + params);
+  }
+  reportsBtn2Action(params:any){
+    console.log('Button 1 Clicked with parameter passed = ' + params);
+  }
   ngOnInit(): void{
     this.initReportList();
   }
