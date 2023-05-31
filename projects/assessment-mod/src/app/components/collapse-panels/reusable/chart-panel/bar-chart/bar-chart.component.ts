@@ -1,4 +1,4 @@
-import {Component, Input, ViewChild, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, Input, ViewChild, Output, EventEmitter} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ChartConfiguration, ChartData, ChartDataset, ChartEvent, ChartType} from "chart.js";
 import {BaseChartDirective, NgChartsModule} from "ng2-charts";
@@ -6,6 +6,7 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { faChartBar, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
+
 
 
 @Component({
@@ -24,7 +25,7 @@ export class BarChartComponent {
   @Input() headerText: string = "List of Reports"; //Text that goes in the header
   @Input() colorTheme:string = "blue"; //red, lt-red, blue, green, purple, dark
   @Input() cardID: string = ""; // Must be unique
-  //@Input() typeOfContent: string = "list"; // list, graph, table, gauge
+  @Input() horizontalBar: boolean = false;
   //@Input() dynamicContent: any[] = []; // pass json data
 
   @Input() buttons: boolean = false; // does this component use buttons
@@ -44,7 +45,7 @@ export class BarChartComponent {
   reportMsgID: string = "";
   reportDataID: string = "";
 
-
+  //public horizontalBarType: ChartType = 'horizontalBar';
 
   emitBtn1Action(params: any){
     //creates an instance of this if more than one button is used
@@ -61,11 +62,14 @@ export class BarChartComponent {
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
     maintainAspectRatio: false,
+    indexAxis: 'x',
     // We use these empty structures as placeholders for dynamic theming.
     scales: {
-      x: {},
+      x: {
+        min: 0
+      },
       y: {
-        min: 10
+        min: 0
       }
     },
     plugins: {
@@ -127,34 +131,34 @@ export class BarChartComponent {
 
   }
 */
+
   public updateChart(): void{
     console.log("this.inputChartData[0].data = " + this.inputChartData[0].data + "barChartData.datasets[0].data = " + this.barChartData.datasets[0].data + "this.inputChartLabels = " + this.inputChartLabels);
     console.log("this.inputChartData[0].label = " + this.inputChartData[0].label + "this.inputChartData[0].backgroundColor = " + this.inputChartData[0].backgroundColor);
     console.log("this.barChartOptions.plugins.title[0].display = " + this.barChartOptions?.plugins?.title?.text);
     console.log("this.inputChartData.length = " + this.inputChartData.length);
-    // @ts-ignore
-    this.barChartData.labels = this.inputChartLabels;
 
+    //remove default data
+    this.barChartData.labels?.pop();
+    this.barChartData.datasets.forEach((dataset) => {
+      dataset.data.pop();
+    });
+
+    //populate new data from imports
+    this.barChartData.labels = this.inputChartLabels;
     for (let i = 0; i < this.inputChartData.length; i ++){
-      if (i < 1){
         // @ts-ignore
         this.barChartData.datasets[i].data = this.inputChartData[i].data;
         // @ts-ignore
         this.barChartData.datasets[i].label = this.inputChartData[i].label;
         // @ts-ignore
         this.barChartData.datasets[i].backgroundColor = this.inputChartData[i].backgroundColor;
-      }
-      /*else{
-        this.barChartData.datasets[i].data.push(this.inputChartData[i].label);
-        // @ts-ignore
-        this.barChartData.datasets.data.push(this.inputChartData[i].data);
-
-      }*/
 
     }
 
-
     //barChartOptions update inputted values
+    // @ts-ignore
+    if(this.horizontalBar) this.barChartOptions.indexAxis = 'y';
     // @ts-ignore
     this.barChartOptions.plugins.title.display = this.includeChartTitle;
     // @ts-ignore
@@ -190,7 +194,6 @@ export class BarChartComponent {
     this.reportDataID = this.cardID + 'Data';
 
     this.updateChart();
-
 
   }
 
