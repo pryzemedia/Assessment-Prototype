@@ -6,6 +6,8 @@ import {HierarchyPanelComponent} from "../../hierarchy/hierarchy-panel/hierarchy
 import {GenericPanelComponent} from "../../reusable/generic-panel/generic-panel.component";
 import {buttonList, reportList} from "../../data/panel-options-interface";
 import {BarChartComponent} from "../../reusable/chart-panel/bar-chart/bar-chart.component";
+import {ChartData, ChartDataset} from "chart.js";
+
 
 @Component({
   selector: 'app-scope-panel',
@@ -21,7 +23,23 @@ export class ScopePanelComponent {
   reportButtons: buttonList[] = [];
   programButtons: buttonList[] = [];
 
+  setBarChartData: ChartDataset[] = [];
+  setBarChartLabels: string[] = [];
 
+  //Bar Chart Example
+  /*barChartDataSettings: ChartData<'bar'> = {
+    labels: [],
+    datasets: [
+      { data: [], label: '', backgroundColor: [] }
+    ]
+  };
+
+  barChartData: ChartData<'bar'> = {
+    labels: [],
+    datasets: [
+      { data: [ 2255, 1324, 1004, 839, 1856 ], label: '2023 Data', backgroundColor: ["red", "green", "blue", "orange", "brown" ] }
+    ]
+  };*/
 
   initReportList(): void{
     this.reportList = [
@@ -83,6 +101,19 @@ export class ScopePanelComponent {
         btnText: "View Details"
       }
     ];
+
+    // ChartJS Bar data
+    this.setBarChartData = [
+      { data: [ 2255, 1324, 1004, 839, 1856 ], label: '2023 Data', backgroundColor: ['#DB0000', '#00851B', '#1406DB', '#C77400', '#C73C00'] }
+    ];
+    this.setBarChartLabels = [ 'January', 'February', 'March', 'April', 'May'];
+    /*this.barChartDataSettings.labels = [ 'January', 'February', 'March', 'April', 'May'];
+    this.barChartDataSettings.datasets[0].data = [ 2255, 1324, 1004, 839, 1856 ];
+    this.barChartDataSettings.datasets[0].label = '2023 Data';
+    this.barChartDataSettings.datasets[0].backgroundColor = ["red", "green", "blue", "orange", "brown" ];
+
+     */
+
   }
 
   reportsBtn1Action(params:any){

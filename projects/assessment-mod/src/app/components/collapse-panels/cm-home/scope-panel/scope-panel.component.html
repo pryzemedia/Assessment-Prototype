@@ -31,8 +31,13 @@
               <div class="col">
                 <app-bar-chart
                   [headerText]="'Number of Assessments'"
-                  [colorTheme]="'purple'"
+                  [colorTheme]="''"
                   [cardID]="'program01'"
+                  [inputChartData]="setBarChartData"
+                  [inputChartLabels]="setBarChartLabels"
+                  [includeLegend]="false"
+                  [includeChartTitle] = "true"
+                  [chartTitle]="'2023 Assessments by month'"
                   [buttons]="true"
                   [buttonList]="programButtons"
                   (btn1_Action)="programBtn1Action($event)"

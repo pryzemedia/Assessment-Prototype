@@ -1,6 +1,6 @@
 import {Component, Input, ViewChild, OnInit, Output, EventEmitter} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ChartConfiguration, ChartData, ChartEvent, ChartType} from "chart.js";
+import {ChartConfiguration, ChartData, ChartDataset, ChartEvent, ChartType} from "chart.js";
 import {BaseChartDirective, NgChartsModule} from "ng2-charts";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { faChartBar, faChevronDown } from '@fortawesome/free-solid-svg-icons';
@@ -30,6 +30,12 @@ export class BarChartComponent {
   @Input() buttons: boolean = false; // does this component use buttons
   @Input() buttonList: any[] = []; // pass json data
 
+  @Input() inputChartData: ChartDataset[] = [];
+  @Input() inputChartLabels: string[] = [];
+  @Input() includeLegend: boolean = false;
+  @Input() includeChartTitle: boolean = false;
+  @Input() chartTitle: string = '';
+
   //button actions
   @Output() btn1_Action: EventEmitter<any> = new EventEmitter<any>();
   @Output() btn2_Action: EventEmitter<any> = new EventEmitter<any>();
@@ -54,6 +60,7 @@ export class BarChartComponent {
 
   public barChartOptions: ChartConfiguration['options'] = {
     responsive: true,
+    maintainAspectRatio: false,
     // We use these empty structures as placeholders for dynamic theming.
     scales: {
       x: {},
@@ -62,8 +69,12 @@ export class BarChartComponent {
       }
     },
     plugins: {
+      title: {
+        display: false,
+        text: ''
+      },
       legend: {
-        display: true,
+        display: this.includeLegend,
       },
       datalabels: {
         anchor: 'end',
@@ -76,11 +87,19 @@ export class BarChartComponent {
     DataLabelsPlugin
   ];
 
+  /*
   public barChartData: ChartData<'bar'> = {
     labels: [ '2006', '2007', '2008', '2009', '2010', '2011', '2012' ],
     datasets: [
       { data: [ 65, 59, 80, 81, 56, 55, 40 ], label: 'Series A' },
       { data: [ 28, 48, 40, 19, 86, 27, 90 ], label: 'Series B' }
+    ]
+  };
+  */
+  public barChartData: ChartData<'bar'> = {
+    labels: [],
+    datasets: [
+      { data: [], label: 'Series A', backgroundColor: [] }
     ]
   };
 
@@ -93,16 +112,54 @@ export class BarChartComponent {
     console.log(event, active);
   }
 
-  public randomize(): void {
-    // Only Change 3 values
-    this.barChartData.datasets[0].data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      Math.round(Math.random() * 100),
-      56,
-      Math.round(Math.random() * 100),
-      40 ];
+  /* public randomize(): void {
+     // Only Change 3 values
+   /*this.barChartData.datasets[0].data = [
+       Math.round(Math.random() * 100),
+       59,
+       80,
+       Math.round(Math.random() * 100),
+       56,
+       Math.round(Math.random() * 100),
+       40 ];
+
+     this.chart?.update();
+
+  }
+*/
+  public updateChart(): void{
+    console.log("this.inputChartData[0].data = " + this.inputChartData[0].data + "barChartData.datasets[0].data = " + this.barChartData.datasets[0].data + "this.inputChartLabels = " + this.inputChartLabels);
+    console.log("this.inputChartData[0].label = " + this.inputChartData[0].label + "this.inputChartData[0].backgroundColor = " + this.inputChartData[0].backgroundColor);
+    console.log("this.barChartOptions.plugins.title[0].display = " + this.barChartOptions?.plugins?.title?.text);
+    console.log("this.inputChartData.length = " + this.inputChartData.length);
+    // @ts-ignore
+    this.barChartData.labels = this.inputChartLabels;
+
+    for (let i = 0; i < this.inputChartData.length; i ++){
+      if (i < 1){
+        // @ts-ignore
+        this.barChartData.datasets[i].data = this.inputChartData[i].data;
+        // @ts-ignore
+        this.barChartData.datasets[i].label = this.inputChartData[i].label;
+        // @ts-ignore
+        this.barChartData.datasets[i].backgroundColor = this.inputChartData[i].backgroundColor;
+      }
+      /*else{
+        this.barChartData.datasets[i].data.push(this.inputChartData[i].label);
+        // @ts-ignore
+        this.barChartData.datasets.data.push(this.inputChartData[i].data);
+
+      }*/
+
+    }
+
+
+    //barChartOptions update inputted values
+    // @ts-ignore
+    this.barChartOptions.plugins.title.display = this.includeChartTitle;
+    // @ts-ignore
+    this.barChartOptions.plugins.title.text = this.chartTitle;
+
 
     this.chart?.update();
   }
@@ -131,6 +188,9 @@ export class BarChartComponent {
 
     this.reportMsgID = this.cardID + 'Msg';
     this.reportDataID = this.cardID + 'Data';
+
+    this.updateChart();
+
 
   }
 
