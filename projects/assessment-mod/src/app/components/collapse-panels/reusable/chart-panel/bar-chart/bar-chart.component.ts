@@ -78,7 +78,7 @@ export class BarChartComponent {
         text: ''
       },
       legend: {
-        display: this.includeLegend,
+        display: false,
       },
       datalabels: {
         anchor: 'end',
@@ -163,6 +163,8 @@ export class BarChartComponent {
     this.barChartOptions.plugins.title.display = this.includeChartTitle;
     // @ts-ignore
     this.barChartOptions.plugins.title.text = this.chartTitle;
+    // @ts-ignore
+    this.barChartOptions.plugins.legend.display = this.includeLegend;
 
 
     this.chart?.update();

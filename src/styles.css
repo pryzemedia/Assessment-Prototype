@@ -475,7 +475,13 @@ th[sortable] {
   width: 80vw;
   min-height: 200px;
 }
-
+.pie-container {
+  position: relative;
+  margin: auto;
+  height: 35vh;
+  width: 30vw;
+  min-height: 300px;
+}
 
 .wrapper #slim-menu-button {
   display: block;

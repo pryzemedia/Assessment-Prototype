@@ -31,25 +31,94 @@
               <div class="col">
                 <app-bar-chart
                   [headerText]="'Number of Assessments'"
-                  [colorTheme]="''"
-                  [cardID]="'program01'"
+                  [colorTheme]="'blue'"
+                  [cardID]="'assessNumbers01'"
                   [inputChartData]="setBarChartData"
                   [inputChartLabels]="setBarChartLabels"
                   [includeLegend]="false"
                   [includeChartTitle] = "true"
-                  [chartTitle]="'2023 Assessments by month'"
+                  [chartTitle]="'2023 Assessments by Month'"
                   [horizontalBar] = "false"
                   [buttons]="true"
                   [buttonList]="programButtons"
                   (btn1_Action)="programBtn1Action($event)"
-                >
 
+                >
+                </app-bar-chart>
+              </div>
+            </div>
+
+            <div class="row mb-2">
+              <div class="col">
+                <app-pie-chart
+                  [headerText]="'Assessment Status'"
+                  [colorTheme]="'blue'"
+                  [cardID]="'assessStatus01'"
+                  [inputChartData]="setPieChartData_01"
+                  [inputChartLabels]="setPieChartLabels_01"
+                  [includeLegend]="true"
+                  [includeChartTitle] = "true"
+                  [chartTitle]="'Latest Assessment Status'"
+                  [horizontalBar] = "false"
+                  [buttons]="true"
+                  [buttonList]="statusButtons"
+                  (btn1_Action)="statusBtn1Action($event)"
+
+                >
+                </app-pie-chart>
+              </div>
+            </div>
+
+          </div><!-- next -->
+
+          <div class="col-12 col-md-6 col-xl-4 mb-2">
+            <div class="row mb-2">
+              <div class="col">
+                <app-pie-chart
+                  [headerText]="'Compliance Level'"
+                  [colorTheme]="'blue'"
+                  [cardID]="'compliance01'"
+                  [inputChartData]="setPieChartData_01"
+                  [inputChartLabels]="setPieChartLabels_01"
+                  [includeLegend]="true"
+                  [includeChartTitle] = "true"
+                  [chartTitle]="'Top Non-complaint Items'"
+                  [horizontalBar] = "false"
+                  [buttons]="true"
+                  [buttonList]="statusButtons"
+                  (btn1_Action)="statusBtn1Action($event)"
+
+                >
+                </app-pie-chart>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <app-bar-chart
+                  [headerText]="'Risk Level'"
+                  [colorTheme]="'blue'"
+                  [cardID]="'risk01'"
+                  [inputChartData]="setBarChartData"
+                  [inputChartLabels]="setBarChartLabels"
+                  [includeLegend]="false"
+                  [includeChartTitle] = "true"
+                  [chartTitle]="'Highest Risk Assets & Units'"
+                  [horizontalBar] = "true"
+                  [buttons]="true"
+                  [buttonList]="programButtons"
+                  (btn1_Action)="programBtn1Action($event)"
+
+                >
                 </app-bar-chart>
               </div>
             </div>
           </div>
 
+
         </div>
+
+
       </div>
     </div>
   </div>

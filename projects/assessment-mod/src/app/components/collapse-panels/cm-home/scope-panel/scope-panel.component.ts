@@ -6,13 +6,14 @@ import {HierarchyPanelComponent} from "../../hierarchy/hierarchy-panel/hierarchy
 import {GenericPanelComponent} from "../../reusable/generic-panel/generic-panel.component";
 import {buttonList, reportList} from "../../data/panel-options-interface";
 import {BarChartComponent} from "../../reusable/chart-panel/bar-chart/bar-chart.component";
-import {ChartData, ChartDataset} from "chart.js";
+import {ChartDataset} from "chart.js";
+import {PieChartPanelComponent} from "../../reusable/pie-chart-panel/pie-chart-panel.component";
 
 
 @Component({
   selector: 'app-scope-panel',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule, HierarchyPanelComponent, GenericPanelComponent, BarChartComponent],
+  imports: [CommonModule, FontAwesomeModule, HierarchyPanelComponent, GenericPanelComponent, BarChartComponent, PieChartPanelComponent],
   templateUrl: './scope-panel.component.html',
   styleUrls: ['./scope-panel.component.css']
 })
@@ -22,9 +23,13 @@ export class ScopePanelComponent {
   reportList: reportList[] = [];
   reportButtons: buttonList[] = [];
   programButtons: buttonList[] = [];
+  statusButtons: buttonList[] = [];
 
   setBarChartData: ChartDataset[] = [];
   setBarChartLabels: string[] = [];
+
+  setPieChartData_01: ChartDataset[] = [];
+  setPieChartLabels_01: string[] = [];
 
   //Bar Chart Example
   /*barChartDataSettings: ChartData<'bar'> = {
@@ -102,12 +107,25 @@ export class ScopePanelComponent {
       }
     ];
 
+    this.statusButtons = [
+      {
+        icon: "",
+        btnColor: "btn-blue-fill",
+        btnClass: "",
+        link: "",
+        btnText: "View Details"
+      }
+    ];
+
     // ChartJS Bar data
     this.setBarChartData = [
       { data: [ 2255, 1324, 1004, 839, 1856 ], label: '2023 Data', backgroundColor: ['#DB0000', '#00851B', '#1406DB', '#C77400', '#C73C00'] }
     ];
     this.setBarChartLabels = [ 'January', 'February', 'March', 'April', 'May'];
-    /*this.barChartDataSettings.labels = [ 'January', 'February', 'March', 'April', 'May'];
+    this.setPieChartData_01 = [
+      { data: [340, 332, 23, 100], label: 'Assessment Status', backgroundColor: ['#1406DB', '#00851B', '#DB0000', '#FEA120']}
+    ];
+    this.setPieChartLabels_01 = ['Conducted', 'Approved', 'Overdue', 'Not Adequate']  /*this.barChartDataSettings.labels = [ 'January', 'February', 'March', 'April', 'May'];
     this.barChartDataSettings.datasets[0].data = [ 2255, 1324, 1004, 839, 1856 ];
     this.barChartDataSettings.datasets[0].label = '2023 Data';
     this.barChartDataSettings.datasets[0].backgroundColor = ["red", "green", "blue", "orange", "brown" ];
@@ -125,6 +143,10 @@ export class ScopePanelComponent {
 
   programBtn1Action(params:any){
     console.log('Program Button 1 Clicked with parameter passed = ' + params);
+  }
+
+  statusBtn1Action(params:any){
+    console.log('Status Button 1 Clicked with parameter passed = ' + params);
   }
 
   ngOnInit(): void{
