@@ -19,7 +19,7 @@ export class PieChartPanelComponent {
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
   faChevronDown = faChevronDown;
-  faChgartPie = faChartPie;
+  faChartPie = faChartPie;
 
   @Input() headerText: string = "List of Reports"; //Text that goes in the header
   @Input() colorTheme:string = "blue"; //red, lt-red, blue, green, purple, dark
@@ -49,11 +49,11 @@ export class PieChartPanelComponent {
 
   }
 
-  emitBtn2Action(params: any){
+  /*emitBtn2Action(params: any){
     //Used if ony one button exists
     this.btn2_Action.emit(params);
 
-  }
+  }*/
 
   // Pie
   public pieChartOptions: ChartConfiguration['options'] = {
@@ -159,6 +159,9 @@ export class PieChartPanelComponent {
         this.headerClass = "blue-header";
         break;
     }
+
+    this.reportMsgID = this.cardID + 'Msg';
+    this.reportDataID = this.cardID + 'Data';
 
     this.updateChart();
   }

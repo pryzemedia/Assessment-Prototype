@@ -3,7 +3,7 @@
     <a data-bs-toggle="collapse" href="#{{cardID}}" role="button"
        aria-expanded="false" aria-controls="" class="d-flex justify-content-between">
       <span>
-        <fa-icon [icon]="faChgartPie" class="me-2"></fa-icon>
+        <fa-icon [icon]="faChartPie" class="me-2"></fa-icon>
         {{headerText}}
       </span>
       <fa-icon [icon]="faChevronDown"></fa-icon>
@@ -43,7 +43,7 @@
           <div *ngIf="buttonList.length < 2;">
             <div class="row d-flex justify-content-center">
               <div *ngFor="let b2 of buttonList; index as i" class="col-auto mt-2 ">
-                <button class="btn {{b2.btnColor}} {{b2.btnClass}}" (click)="emitBtn2Action('Button Two Parameter ' + i)">{{b2.btnText}}</button>
+                <button class="btn {{b2.btnColor}} {{b2.btnClass}}" (click)="emitBtn1Action('Button Two Parameter ' + i)">{{b2.btnText}}</button>
               </div>
             </div>
           </div>

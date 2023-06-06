@@ -1,0 +1,27 @@
+<div class="row m-3">
+  <div class="col">
+    <div class="card">
+      <div class="card-header sms-dark-header">
+        <a data-bs-toggle="collapse" href="#collapse-2" role="button" aria-expanded="false"
+           aria-controls="collapse-2" class="d-flex justify-content-between">
+          <span>Select Location / Scope</span> <fa-icon [icon]="faChevronDown"></fa-icon>
+        </a>
+      </div>
+      <div class="category-bg collapse show" id="collapse-2" style="">
+        <div class="row">
+          <div class="col mb-3">
+            <app-card-nav
+              [headerText]="'Assessments'"
+              [colorTheme]="'red'"
+              [cardID]="'assessTable01'"
+              [buttons] = "false"
+
+            >
+
+            </app-card-nav>
+          </div><!-- col mb-3 -->
+        </div>
+      </div>
+    </div><!--Card -->
+  </div>
+</div>

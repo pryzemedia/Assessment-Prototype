@@ -31,6 +31,12 @@ export class ScopePanelComponent {
   setPieChartData_01: ChartDataset[] = [];
   setPieChartLabels_01: string[] = [];
 
+  setPieChartData_02: ChartDataset[] = [];
+  setPiChartLabels_02: string[] = [];
+
+  setBarChartData_02: ChartDataset[] = [];
+  setBarChartLabels_02: string[] = [];
+
   //Bar Chart Example
   /*barChartDataSettings: ChartData<'bar'> = {
     labels: [],
@@ -125,7 +131,20 @@ export class ScopePanelComponent {
     this.setPieChartData_01 = [
       { data: [340, 332, 23, 100], label: 'Assessment Status', backgroundColor: ['#1406DB', '#00851B', '#DB0000', '#FEA120']}
     ];
-    this.setPieChartLabels_01 = ['Conducted', 'Approved', 'Overdue', 'Not Adequate']  /*this.barChartDataSettings.labels = [ 'January', 'February', 'March', 'April', 'May'];
+    this.setPieChartLabels_01 = ['Conducted', 'Approved', 'Overdue', 'Not Adequate']  ;
+
+    this.setPieChartData_02 = [
+      { data: [23, 20, 15, 9], label: 'Compliant', backgroundColor: ['#DB0000', '#00851B', '#1406DB', '#FEA120']}
+    ]
+    this.setPiChartLabels_02 = ["AAA", "BBB", "CCC", "DDD"];
+
+    this.setBarChartData_02 = [
+      { data: [23, 20, 9], label: '2023 Data', backgroundColor: ['#DB0000', '#00851B', '#1406DB' ] }
+    ]
+    this.setBarChartLabels_02 = ["AAA", "BBB", "DDD"];
+    /*this.barChartDataSettings.labels = [ 'January', 'February', 'March', 'April', 'May'];
+
+
     this.barChartDataSettings.datasets[0].data = [ 2255, 1324, 1004, 839, 1856 ];
     this.barChartDataSettings.datasets[0].label = '2023 Data';
     this.barChartDataSettings.datasets[0].backgroundColor = ["red", "green", "blue", "orange", "brown" ];
@@ -137,15 +156,23 @@ export class ScopePanelComponent {
   reportsBtn1Action(params:any){
     console.log('Reports Button 1 Clicked with parameter passed = ' + params);
   }
-  reportsBtn2Action(params:any){
+  /*reportsBtn2Action(params:any){
     console.log('Reports Button 2 Clicked with parameter passed = ' + params);
-  }
+  }*/
 
   programBtn1Action(params:any){
     console.log('Program Button 1 Clicked with parameter passed = ' + params);
   }
 
   statusBtn1Action(params:any){
+    console.log('Status Button 1 Clicked with parameter passed = ' + params);
+  }
+
+  complianceBtn1Action(params:any){
+    console.log('Status Button 1 Clicked with parameter passed = ' + params);
+  }
+
+  riskBtn1Action(params:any){
     console.log('Status Button 1 Clicked with parameter passed = ' + params);
   }
 

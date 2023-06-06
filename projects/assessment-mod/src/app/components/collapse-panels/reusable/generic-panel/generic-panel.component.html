@@ -43,7 +43,7 @@
         <div *ngIf="buttonList.length < 2;">
             <div class="row d-flex justify-content-center">
               <div *ngFor="let b2 of buttonList; index as i" class="col-auto mt-2 ">
-                <button class="btn {{b2.btnColor}} {{b2.btnClass}}" (click)="emitBtn2Action('Button Two Parameter ' + i)">{{b2.btnText}}</button>
+                <button class="btn {{b2.btnColor}} {{b2.btnClass}}" (click)="emitBtn1Action('Button Two Parameter ' + i)">{{b2.btnText}}</button>
               </div>
             </div>
         </div>
