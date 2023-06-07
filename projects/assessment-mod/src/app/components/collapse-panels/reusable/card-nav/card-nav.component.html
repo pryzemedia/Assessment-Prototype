@@ -20,13 +20,13 @@
         <div class="row">
           <div class="col">
             <ul id="{{tableTabUL}}" class="nav nav-tabs card-header-tabs" role="tablist">
-              <li class="nav-item">
-                <button id="assessment-tab" class="nav-link active" data-bs-toggle="tab"
-                        data-bs-target="#assessments" type="button" role="tab"
-                        aria-controls="assessments" aria-selected="true">
-                  <span class="me-2 text-purple">
+              <li class="nav-item" *ngFor="let navItem of dynamicContent">
+                <button id="{{navItem.cardID}}-tab" class="nav-link {{navItem.firstLinkOnly}}" data-bs-toggle="tab"
+                        [attr.data-bs-target]="'#' + navItem.cardID" type="button" role="tab"
+                        [attr.aria-controls]="navItem.cardID" aria-selected="true">
+                  <span class="me-2 {{navItem.iconColorClass}}">
                     <fa-icon [icon]="faTasks"></fa-icon>
-                  </span>Assessments</button>
+                  </span>{{navItem.tabText}}</button>
               </li>
             </ul>
           </div>
@@ -34,16 +34,16 @@
       </div>
     </div> <!--reportDataID -->
 
-    <div class="card-body tab-content" id="myTabContent">
-      <div  class="tab-pane fade show active" id="assessments" role="tabpanel" aria-labelledby="assessments-tab">
+    <div class="card-body tab-content" id="myTabContent" >
+      <div *ngFor="let cardItem of dynamicContent" class="tab-pane fade {{cardItem.firstCardOnly}}" id="{{cardItem.cardID}}" role="tabpanel" [attr.aria-labelledby] ="cardItem.cardID + '-tab'">
         <div class="row d-flex">
           <div class="col-auto">
             <h3 class="my-2">
-              <span class="text-purple me-2">
+              <span class="{{cardItem.iconColorClass}} me-2">
                 <fa-icon [icon]="faTasks"></fa-icon>
-              </span>Assessments
+              </span>{{cardItem.cardTitle}}
             </h3>
-            <p class="mb-4">Create, view, and update Assessments.</p>
+            <p class="mb-4">{{cardItem.cardText}}</p>
           </div>
           <div class="col-auto ms-auto mb-2">
             <div class="form-check form-switch">
@@ -53,23 +53,7 @@
           </div>
         </div>
 
-        <div class="row mb-3">
-          <div class="col-6 col-lg-3 d-flex justify-content-between">
-            <div class="col-auto">
-              <button class="btn btn-purple-fill px-2 me-2 mb-2" data-bs-toggle="modal" data-bs-target="#assessmentModal">
-                <fa-icon [icon]="faPlus"></fa-icon> Create New Entry</button>
-            </div>
-            <div class="col-auto">
-              <button class="btn btn-purple-fill px-2 me-2 mb-2" data-bs-toggle="modal" data-bs-target="#assessmentModal" >
-                <fa-icon [icon]="faClone"></fa-icon> Clone New Entry</button>
-            </div>
-            <div class="col-auto">
-              <button class="btn btn-red px-2 mb-2">
-                <fa-icon [icon]="faTrashAlt"></fa-icon> Delete Selected Entry</button>
-            </div>
-          </div>
 
-        </div>
 
       </div> <!-- assessments -->
     </div>

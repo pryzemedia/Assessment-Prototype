@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { faChevronDown, faFileExcel, faFilePdf, faFileWord, faList } from '@fortawesome/free-solid-svg-icons';
-import {reportList} from "../../data/panel-options-interface";
+import {reportList} from "../../../data/panel-options-interface";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 @Component({

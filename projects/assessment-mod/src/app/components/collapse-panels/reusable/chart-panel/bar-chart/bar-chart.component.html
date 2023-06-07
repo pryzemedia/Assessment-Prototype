@@ -36,7 +36,7 @@
           <div *ngIf="buttonList.length > 1;">
             <div class="row d-flex justify-content-between px-2 my-2">
               <div *ngFor="let b1 of buttonList; index as i" class="col-auto mt-2 ">
-                <button class="btn {{b1.btnColor}} {{b1.btnClass}}" (click)="emitBtn1Action('Button One' + b1 + ' Parameter '+ i)">{{b1.btnText}}</button>
+                <button class="btn {{b1.btnColor}} {{b1.btnClass}}" (click)="emitBtn1Action('Button = ' + b1.btnText + ' Parameter '+ i)">{{b1.btnText}}</button>
               </div>
             </div>
           </div>
@@ -44,7 +44,7 @@
           <div *ngIf="buttonList.length < 2;">
             <div class="row d-flex justify-content-center">
               <div *ngFor="let b2 of buttonList; index as i" class="col-auto mt-2 ">
-                <button class="btn {{b2.btnColor}} {{b2.btnClass}}" (click)="emitBtn2Action('Button Two Parameter ' + i)">{{b2.btnText}}</button>
+                <button class="btn {{b2.btnColor}} {{b2.btnClass}}" (click)="emitBtn1Action('Button  = ' + b2.btnText + ' Parameter ' + i)">{{b2.btnText}}</button>
               </div>
             </div>
           </div>

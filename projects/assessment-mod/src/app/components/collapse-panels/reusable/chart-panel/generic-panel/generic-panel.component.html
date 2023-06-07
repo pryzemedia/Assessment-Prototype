@@ -3,7 +3,7 @@
     <a data-bs-toggle="collapse" href="#{{cardID}}" role="button"
        aria-expanded="false" aria-controls="" class="d-flex justify-content-between">
       <span>
-        <fa-icon [icon]="faChartPie" class="me-2"></fa-icon>
+        <fa-icon [icon]="faList" class="me-2"></fa-icon>
         {{headerText}}
       </span>
       <fa-icon [icon]="faChevronDown"></fa-icon>
@@ -17,40 +17,39 @@
 
     <div class="card-body">
       <div id="{{reportDataID}}" class="">
-        <div class="row mb-2" >
-          <div class="col pie-container  d-flex justify-content-center">
-            <!-- Canvas here-->
-            <!--suppress TypeScriptValidateTypes -->
-            <canvas baseChart class="chart"
-                    [data]="pieChartData"
-                    [type]="pieChartType"
-                    [options]="pieChartOptions"
-                    [plugins]="pieChartPlugins"
+        <div class="row mb-2" *ngFor="let dc of dynamicContent">
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <a href="{{dc.href}}" target="_blank" [ngSwitch]="dc.icon">
 
-            >
-            </canvas>
+                  <fa-icon *ngSwitchCase="'faFileWord'" [icon]="faFileWord" class="{{dc.iconClasses}}"></fa-icon>
+                  <fa-icon *ngSwitchCase="'faFilePdf'" [icon]="faFilePdf" class="{{dc.iconClasses}}"></fa-icon>
+                  <fa-icon *ngSwitchCase="'faFileExcel'" [icon]="faFileExcel" class="{{dc.iconClasses}}"></fa-icon>
+                  {{dc.linkText}}</a>
+              </div>
+            </div>
           </div>
         </div>
         <div *ngIf="buttons" class=" buttonList-length {{buttonList.length}}">
           <div *ngIf="buttonList.length > 1;">
             <div class="row d-flex justify-content-between px-2 my-2">
               <div *ngFor="let b1 of buttonList; index as i" class="col-auto mt-2 ">
-                <button class="btn {{b1.btnColor}} {{b1.btnClass}}" (click)="emitBtn1Action('Button One' + b1 + ' Parameter '+ i)">{{b1.btnText}}</button>
+                <button class="btn {{b1.btnColor}} {{b1.btnClass}}" (click)="emitBtn1Action('Button = ' + b1.btnText + ' Parameter '+ i)">{{b1.btnText}}</button>
               </div>
             </div>
-          </div>
+        </div>
 
-          <div *ngIf="buttonList.length < 2;">
+        <div *ngIf="buttonList.length < 2;">
             <div class="row d-flex justify-content-center">
               <div *ngFor="let b2 of buttonList; index as i" class="col-auto mt-2 ">
                 <button class="btn {{b2.btnColor}} {{b2.btnClass}}" (click)="emitBtn1Action('Button Two Parameter ' + i)">{{b2.btnText}}</button>
               </div>
             </div>
-          </div>
+        </div>
 
         </div>
       </div><!--reportData-->
     </div>
   </div>
-
 </div>

@@ -441,6 +441,25 @@ th[sortable] {
   border: solid 1px #126439;
   color: #126439;
 }
+
+
+.card-header-tabs.nav-tabs .nav-item{
+  background-color: #EBEBEB;
+  font-weight: normal;
+}
+.nav-tabs .nav-link {
+
+  border: 1px solid white;
+
+}
+.nav-link{
+  color: #0242A2;
+}
+
+.card-header-tabs.nav-tabs .nav-item {
+  background-color: #EBEBEB;
+}
+
 /*change to .fa-chevron-down to .fa if you want to rotate any icon*/
 .card-header .fa-chevron-down {
   transition: .3s transform ease-in-out;

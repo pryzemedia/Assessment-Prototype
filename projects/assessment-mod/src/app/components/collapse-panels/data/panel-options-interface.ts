@@ -12,3 +12,13 @@ export interface buttonList{
   link: string;
   btnText: string;
 }
+
+export interface cardList{
+  cardID: string;
+  tabText: string;
+  cardTitle: string;
+  cardText: string;
+  iconColorClass: string;
+  firstCardOnly: string;
+  firstLinkOnly: string;
+}

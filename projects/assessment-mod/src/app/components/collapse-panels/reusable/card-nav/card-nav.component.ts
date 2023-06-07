@@ -22,6 +22,7 @@ export class CardNavComponent {
   @Input() headerText: string = "List of Reports"; //Text that goes in the header
   @Input() colorTheme:string = "blue"; //red, lt-red, blue, green, purple, dark
   @Input() cardID: string = ""; // Must be unique
+  @Input() dynamicContent: any[] = []; //Nav tabs dynamic content
 
   @Input() buttons: boolean = false; // does this component use buttons
   @Input() buttonList: any[] = []; // pass json data
@@ -57,7 +58,7 @@ export class CardNavComponent {
         this.headerClass = "dark-header";
         break;
       case "red" :
-        this.headerClass = "red-header";
+        this.headerClass = "sms-red-header";
         this.accentBgClass = "sms-lt-red-header";
         break;
       case "lt-red" :
