@@ -4,11 +4,12 @@ import {ScopePanelComponent} from "../../components/collapse-panels/cm-home/scop
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import {ItemPanelComponent} from "../../components/collapse-panels/cm-home/item-panel/item-panel.component";
+import {NgbPopoverModule} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-cm-home',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule, ScopePanelComponent, ItemPanelComponent],
+  imports: [CommonModule, FontAwesomeModule, ScopePanelComponent, ItemPanelComponent, NgbPopoverModule],
   templateUrl: './cm-home.component.html',
   styleUrls: ['./cm-home.component.css']
 })
