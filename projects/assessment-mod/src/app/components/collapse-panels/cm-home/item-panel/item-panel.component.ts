@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {faChevronDown, faTable } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-import {CardNavComponent} from "../../reusable/card-nav/card-nav.component";
+import {CardNavComponent} from "../../../reusable/card-nav/card-nav.component";
 import {cardList} from "../../data/panel-options-interface";
 
 @Component({

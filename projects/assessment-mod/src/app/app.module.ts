@@ -9,6 +9,7 @@ import { ManageAssessmentComponent } from './pages/manage-assessment/manage-asse
 import {MatIconModule} from "@angular/material/icon";
 import { CollectDataComponent } from './pages/collect-data/collect-data.component';
 import { CMHomeComponent } from './pages/cm-home/cm-home.component';
+import { DataPropertyGetterPipe } from './components/reusable/table/data-property-pipe/data-property-getter.pipe';
 
 const providers: Provider[] = [];
 
@@ -17,16 +18,20 @@ const providers: Provider[] = [];
     AppComponent,
     AssessmentHomeComponent,
     ManageAssessmentComponent,
-    CollectDataComponent
+    CollectDataComponent,
+    DataPropertyGetterPipe
     //CMHomeComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FontAwesomeModule,
-        MatIconModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FontAwesomeModule,
+    MatIconModule
+  ],
   providers: [],
+  exports: [
+    DataPropertyGetterPipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

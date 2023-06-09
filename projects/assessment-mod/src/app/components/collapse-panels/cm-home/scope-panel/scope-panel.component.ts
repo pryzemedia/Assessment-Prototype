@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import {HierarchyPanelComponent} from "../../hierarchy/hierarchy-panel/hierarchy-panel.component";
-import {GenericPanelComponent} from "../../reusable/chart-panel/generic-panel/generic-panel.component";
+import {GenericPanelComponent} from "../../../reusable/chart-panel/generic-panel/generic-panel.component";
 import {buttonList, reportList} from "../../data/panel-options-interface";
-import {BarChartComponent} from "../../reusable/chart-panel/bar-chart/bar-chart.component";
+import {BarChartComponent} from "../../../reusable/chart-panel/bar-chart/bar-chart.component";
 import {ChartDataset} from "chart.js";
-import {PieChartPanelComponent} from "../../reusable/chart-panel/pie-chart-panel/pie-chart-panel.component";
+import {PieChartPanelComponent} from "../../../reusable/chart-panel/pie-chart-panel/pie-chart-panel.component";
 
 
 @Component({
