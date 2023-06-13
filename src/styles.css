@@ -228,10 +228,11 @@ a:hover.lt-blue, a:focus.lt-blue{
   color: black !important;
 }
 
-.mat-paginator, .mat-paginator-page-size .mat-select-trigger{
+/*TODO(mdc-migration): The following rule targets internal classes of select that may no longer apply for the MDC version.*/
+.mat-mdc-paginator, .mat-mdc-paginator-page-size .mat-select-trigger{
   color: #154f7e;
 }
-.mat-header-cell{
+.mat-mdc-header-cell{
   color: #154f7e;
   font-weight: bold;
 }
@@ -240,7 +241,7 @@ a:hover.lt-blue, a:focus.lt-blue{
   /*color: #154f7e;
   opacity: 1;*/
 }
-.mat-dialog-container{
+.mat-mdc-dialog-container{
   padding: 0 !important;
 }
 

@@ -2,12 +2,12 @@ import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild
 import { CommonModule } from '@angular/common';
 import {TableColumn} from "./TableColumns";
 import {MatSort, MatSortModule, Sort} from '@angular/material/sort';
-import {MatLegacyTableDataSource as MatTableDataSource, MatLegacyTableModule as MatTableModule} from '@angular/material/legacy-table';
-import {MatLegacyPaginator as MatPaginator, MatLegacyPaginatorModule as MatPaginatorModule} from '@angular/material/legacy-paginator';
-import {MatLegacyFormFieldModule as MatFormFieldModule} from "@angular/material/legacy-form-field";
-import {MatLegacyInputModule as MatInputModule} from "@angular/material/legacy-input";
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
-import {MatLegacyButtonModule as MatButtonModule} from "@angular/material/legacy-button";
+import {MatButtonModule} from "@angular/material/button";
 import {DataPropertyGetterPipe} from "./data-property-pipe/data-property-getter.pipe";
 
 
@@ -40,7 +40,7 @@ export class TableComponent implements OnInit, AfterViewInit {
   @Input() isSortable = false;
   @Input() isFilterable = false;
   @Input() tableColumns: TableColumn[] = [];
-  @Input() rowActionIcon: string | undefined;
+  @Input() rowActionIcon: string = "";
   @Input() paginationSizes: number[] = [5, 10, 15];
   @Input() defaultPageSize = this.paginationSizes[1];
 
@@ -51,6 +51,11 @@ export class TableComponent implements OnInit, AfterViewInit {
   @Input() set tableData(data: any[]) {
     this.setTableDataSource(data);
   }
+
+  //hide non-priority rows
+  nonPriorityTD: string = 'd-none d-md-table-cell align-middle';
+  priorityTD: string = 'align-middle';
+
 
   constructor() {
   }

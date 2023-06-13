@@ -17,7 +17,6 @@ export class AssessmentTableComponent {
   assessmentData: Assessments[] = [];
   assessmentTableColumns: TableColumn[] = [];
 
-
   sortData(sortParameters: Sort) {
     const keyName = sortParameters.active;
     if (sortParameters.direction === 'asc') {
@@ -49,49 +48,57 @@ export class AssessmentTableComponent {
         name: 'Info',
         dataKey: 'information',
         position: 'left',
-        isSortable: true
+        isSortable: true,
+        priority: true
       },
       {
         name: 'ID',
-        dataKey: 'assessId',
-        position: 'right',
-        isSortable: true
+        dataKey: 'id',
+        position: 'left',
+        isSortable: true,
+        priority: false
       },
       {
         name: 'Name',
-        dataKey: 'assessName',
-        position: 'right',
-        isSortable: true
+        dataKey: 'name',
+        position: 'left',
+        isSortable: true,
+        priority: true
       },
       {
         name: 'Created by',
         dataKey: 'createdBy',
-        position: 'right',
-        isSortable: true
+        position: 'left',
+        isSortable: true,
+        priority: true
       },
       {
         name: 'Status',
         dataKey: 'status',
-        position: 'right',
-        isSortable: true
+        position: 'left',
+        isSortable: true,
+        priority: true
       },
       {
         name: 'Released',
         dataKey: 'released',
-        position: 'right',
-        isSortable: true
+        position: 'left',
+        isSortable: true,
+        priority: false
       },
       {
         name: 'Last Updated',
         dataKey: 'lastUpdated',
-        position: 'right',
-        isSortable: true
+        position: 'left',
+        isSortable: true,
+        priority: false
       },
       {
         name: 'Next Due',
         dataKey: 'nextDue',
-        position: 'right',
-        isSortable: true
+        position: 'left',
+        isSortable: true,
+        priority: false
       }
     ];
   }
