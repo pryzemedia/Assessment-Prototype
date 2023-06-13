@@ -2,12 +2,12 @@ import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild
 import { CommonModule } from '@angular/common';
 import {TableColumn} from "./TableColumns";
 import {MatSort, MatSortModule, Sort} from '@angular/material/sort';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import {MatFormFieldModule} from "@angular/material/form-field";
-import {MatInputModule} from "@angular/material/input";
+import {MatLegacyTableDataSource as MatTableDataSource, MatLegacyTableModule as MatTableModule} from '@angular/material/legacy-table';
+import {MatLegacyPaginator as MatPaginator, MatLegacyPaginatorModule as MatPaginatorModule} from '@angular/material/legacy-paginator';
+import {MatLegacyFormFieldModule as MatFormFieldModule} from "@angular/material/legacy-form-field";
+import {MatLegacyInputModule as MatInputModule} from "@angular/material/legacy-input";
 import {MatIconModule} from "@angular/material/icon";
-import {MatButtonModule} from "@angular/material/button";
+import {MatLegacyButtonModule as MatButtonModule} from "@angular/material/legacy-button";
 import {DataPropertyGetterPipe} from "./data-property-pipe/data-property-getter.pipe";
 
 
