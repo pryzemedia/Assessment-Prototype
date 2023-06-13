@@ -1,1 +1,10 @@
-<p>assessment-table works!</p>
+<app-custom-table [tableData]="assessmentData"
+              [tableColumns]="assessmentTableColumns"
+              [isFilterable]="true"
+              [isPageable]="true"
+              [paginationSizes]="[2,4,6]"
+              [defaultPageSize]="4"
+              (sort)="sortData($event)"
+              [rowActionIcon]="'remove_shopping_cart'"
+              (rowAction)="removeOrder($event)">
+</app-custom-table>

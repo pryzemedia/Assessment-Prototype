@@ -9,7 +9,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {DataPropertyGetterPipe} from "./data-property-pipe/data-property-getter.pipe";
-import {AppModule} from "../../../../app.module";
+
 
 
 @Component({
@@ -24,7 +24,6 @@ import {AppModule} from "../../../../app.module";
     MatSortModule,
     MatIconModule,
     MatButtonModule,
-    AppModule,
     DataPropertyGetterPipe
   ],
   templateUrl: './table.component.html',

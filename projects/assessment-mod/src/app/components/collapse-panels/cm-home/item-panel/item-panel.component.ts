@@ -4,11 +4,12 @@ import {faChevronDown, faTable } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {CardNavComponent} from "../../../reusable/card-nav/card-nav.component";
 import {cardList} from "../../data/panel-options-interface";
+import {AssessmentTableComponent} from "../../../reusable/tables/assessment-table/assessment-table.component";
 
 @Component({
   selector: 'app-item-panel',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule, CardNavComponent],
+    imports: [CommonModule, FontAwesomeModule, CardNavComponent, AssessmentTableComponent],
   templateUrl: './item-panel.component.html',
   styleUrls: ['./item-panel.component.css']
 })

@@ -1,6 +1,7 @@
 export interface Assessments {
   id: number;
   name: string;
+  link: string;
   createdBy: string;
   status: string;
   released: string;
