@@ -36,6 +36,8 @@ export class AssessmentTableComponent {
     this.assessmentData = this.assessmentData.filter(item => item.id !== assessment.id);
   }
 
+
+
   ngOnInit(): void{
     this.initializeColumns();
     this.assessmentData = this.getAssessments();
@@ -44,18 +46,18 @@ export class AssessmentTableComponent {
 
   initializeColumns(): void {
     this.assessmentTableColumns = [
-      {
+      /*{
         name: 'Info',
         dataKey: 'information',
         position: 'left',
         isSortable: true,
         priority: true
-      },
+      },*/
       {
         name: 'ID',
         dataKey: 'id',
         position: 'left',
-        isSortable: true,
+        isSortable: false,
         priority: false
       },
       {

@@ -11,7 +11,6 @@ import {MatButtonModule} from "@angular/material/button";
 import {DataPropertyGetterPipe} from "./data-property-pipe/data-property-getter.pipe";
 
 
-
 @Component({
   selector: 'app-custom-table',
   standalone: true,
@@ -56,9 +55,13 @@ export class TableComponent implements OnInit, AfterViewInit {
   nonPriorityTD: string = 'd-none d-md-table-cell align-middle';
   priorityTD: string = 'align-middle';
 
+  //Modal related vars
+  title = 'Assessment Details';
+  closeResult: string = "";
 
-  constructor() {
-  }
+
+  constructor() {}
+
 
   ngOnInit(): void {
     const columnNames = this.tableColumns.map((tableColumn: TableColumn) => tableColumn.name);

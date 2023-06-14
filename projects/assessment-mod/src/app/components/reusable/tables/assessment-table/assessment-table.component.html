@@ -1,9 +1,10 @@
 <app-custom-table [tableData]="assessmentData"
-              [tableColumns]="assessmentTableColumns"
-              [isFilterable]="true"
-              [isPageable]="true"
-              [paginationSizes]="[5,10,15]"
-              [defaultPageSize]="5"
-              (sort)="sortData($event)"
-              (rowAction)="removeOrder($event)">
+                  [tableColumns]="assessmentTableColumns"
+                  [isFilterable]="true"
+                  [isPageable]="true"
+                  [paginationSizes]="[5,10,15]"
+                  [defaultPageSize]="5"
+                  [rowActionIcon]="'info'"
+                  (sort)="sortData($event)"
+                  (rowAction)="removeOrder($event)">
 </app-custom-table>
