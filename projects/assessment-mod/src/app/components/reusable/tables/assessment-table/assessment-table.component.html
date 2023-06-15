@@ -6,5 +6,12 @@
                   [defaultPageSize]="5"
                   [rowActionIcon]="'info'"
                   (sort)="sortData($event)"
-                  (rowAction)="removeOrder($event)">
+                  (rowAction)="openModal($event)">
 </app-custom-table>
+
+<app-table-modal #assessTable
+  [tableColumns]="assessmentTableColumns"
+  [selectedAssessment]="cAssessment"
+>
+
+</app-table-modal>

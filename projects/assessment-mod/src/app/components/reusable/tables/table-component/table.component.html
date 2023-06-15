@@ -15,7 +15,7 @@
     <ng-container *ngIf="rowActionIcon?.length" [matColumnDef]="rowActionIcon">
       <th mat-header-cell class="align-middle ps-3" *matHeaderCellDef>Info</th>
       <td mat-cell [ngClass]="priorityTD" *matCellDef="let element" [id]="rowActionIcon" (click)="emitRowAction(element)">
-        <button  class="btn btn-link align-middle">
+        <button data-bs-toggle="modal" data-bs-target="#tableModal" class="btn btn-link align-middle">
           <mat-icon>{{rowActionIcon}}</mat-icon>
         </button>
       </td>

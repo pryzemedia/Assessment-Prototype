@@ -7,4 +7,5 @@ export interface Assessments {
   released: string;
   lastUpdated: string;
   nextDue: string;
+  [key: string]: string | number;
 }

@@ -8,48 +8,17 @@
         </div>
         <div class="modal-body">
           <ul class="list-group">
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-              <div class="ms-2 me-auto">
-                <div class="fw-bold">ID</div>
-                001213
-              </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-              <div class="ms-2 me-auto">
-                <div class="fw-bold">Name</div>
-                <a href="#">W2R904-COE01 - M/V Strong</a>
-              </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-              <div class="ms-2 me-auto">
-                <div class="fw-bold">Status</div>
-                1 - Data Collection
-              </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-              <div class="ms-2 me-auto">
-                <div class="fw-bold">Owner</div>
-                Linda C. Bridges
-              </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-              <div class="ms-2 me-auto">
-                <div class="fw-bold">Created</div>
-                03/22/2023
-              </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-              <div class="ms-2 me-auto">
-                <div class="fw-bold">Node</div>
-                Readiness ID
-              </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-              <div class="ms-2 me-auto">
-                <div class="fw-bold">Objective(s)</div>
-                Army Physical Security Assessment Report DA FORM 2896-1
-              </div>
-            </li>
+            <ng-container *ngFor="let title of tableColumns; let i = index">
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold">{{title.name}} : </div>
+                  <span id="{{title.name}}{{i}}"></span>
+                  <ng-container *ngIf="selectedAssessment.length > 1">
+                    {{selectedAssessment[0][title.dataKey]}}
+                  </ng-container>
+                </div>
+              </li>
+            </ng-container>
           </ul>
         </div>
         <div class="modal-footer">

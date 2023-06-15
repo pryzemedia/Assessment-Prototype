@@ -1,21 +1,32 @@
-import { Component } from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {Assessments} from "./assessments";
 import {TableColumn} from "../table-component/TableColumns";
 import {Sort} from "@angular/material/sort";
 import {TableComponent} from "../table-component/table.component";
+//import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {TableModalComponent} from "../table-component/table-modal/table-modal.component";
+
 
 @Component({
   selector: 'app-assessment-table',
   standalone: true,
-  imports: [CommonModule, TableComponent],
+  imports: [CommonModule, TableComponent, TableModalComponent],
   templateUrl: './assessment-table.component.html',
   styleUrls: ['./assessment-table.component.css']
 })
-export class AssessmentTableComponent {
+export class AssessmentTableComponent implements OnInit {
+  @ViewChild(TableModalComponent) modalComponent!: TableModalComponent;
 
   assessmentData: Assessments[] = [];
   assessmentTableColumns: TableColumn[] = [];
+  //current assessment wanted to use a different var then selectedAssessment
+  public cAssessment: Assessments[] = [];
+
+
+  constructor(
+    //private _NgbModal: NgbModal
+  ) { }
 
   sortData(sortParameters: Sort) {
     const keyName = sortParameters.active;
@@ -36,6 +47,22 @@ export class AssessmentTableComponent {
     this.assessmentData = this.assessmentData.filter(item => item.id !== assessment.id);
   }
 
+  openModal(assessment: Assessments) {
+    this.cAssessment[0] = assessment;
+    console.log("this.cAssessment[0] = " + this.cAssessment[0].name);
+    this.modalComponent.updateModalData(assessment);
+    for(let i = 0; i < this.assessmentTableColumns.length; i++){
+      let modelDiv = document.getElementById((this.assessmentTableColumns[i].name+i));
+      if(modelDiv != null){
+        modelDiv.innerText = this.cAssessment[0][this.assessmentTableColumns[i].dataKey] as string;
+      }
+    }
+    /*const modalDiv = document.getElementById("tableModal");
+    if(modalDiv != null){
+      //const myModal = new bootstrap.Modal(modalDiv);
+    }*/
+    //this._NgbModal.open(TableModalComponent);
+  }
 
 
   ngOnInit(): void{
@@ -43,6 +70,9 @@ export class AssessmentTableComponent {
     this.assessmentData = this.getAssessments();
   }
 
+  ngAfterViewInit(){
+
+  }
 
   initializeColumns(): void {
     this.assessmentTableColumns = [
