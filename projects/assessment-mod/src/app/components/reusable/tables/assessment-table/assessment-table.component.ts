@@ -57,11 +57,6 @@ export class AssessmentTableComponent implements OnInit {
         modelDiv.innerText = this.cAssessment[0][this.assessmentTableColumns[i].dataKey] as string;
       }
     }
-    /*const modalDiv = document.getElementById("tableModal");
-    if(modalDiv != null){
-      //const myModal = new bootstrap.Modal(modalDiv);
-    }*/
-    //this._NgbModal.open(TableModalComponent);
   }
 
 

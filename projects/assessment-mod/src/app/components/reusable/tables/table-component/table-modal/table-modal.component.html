@@ -11,11 +11,13 @@
             <ng-container *ngFor="let title of tableColumns; let i = index">
               <li class="list-group-item d-flex justify-content-between align-items-start">
                 <div class="ms-2 me-auto">
-                  <div class="fw-bold">{{title.name}} : </div>
-                  <span id="{{title.name}}{{i}}"></span>
-                  <ng-container *ngIf="selectedAssessment.length > 1">
-                    {{selectedAssessment[0][title.dataKey]}}
+                  <div class="fw-bold">{{title.name}} </div>
+                  <ng-container *ngIf="title.dataKey != 'name'; else mLink">
+                    <span id="{{title.name}}{{i}}"></span>
                   </ng-container>
+                  <ng-template #mLink>
+                    <button class="btn btn-link"><span id="{{title.name}}{{i}}"></span></button>
+                  </ng-template>
                 </div>
               </li>
             </ng-container>
