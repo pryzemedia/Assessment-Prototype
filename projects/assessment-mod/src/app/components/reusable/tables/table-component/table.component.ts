@@ -9,6 +9,8 @@ import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {DataPropertyGetterPipe} from "./data-property-pipe/data-property-getter.pipe";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {faClone, faFileExcel, faPlus, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -23,7 +25,8 @@ import {DataPropertyGetterPipe} from "./data-property-pipe/data-property-getter.
     MatSortModule,
     MatIconModule,
     MatButtonModule,
-    DataPropertyGetterPipe
+    DataPropertyGetterPipe,
+    FontAwesomeModule
   ],
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css']
@@ -43,6 +46,8 @@ export class TableComponent implements OnInit, AfterViewInit {
   @Input() paginationSizes: number[] = [5, 10, 15];
   @Input() defaultPageSize = this.paginationSizes[1];
 
+  @Input() colorTheme:string = ""; //red, lt-red, blue, green, purple, dark
+
   @Output() sort: EventEmitter<Sort> = new EventEmitter();
   @Output() rowAction: EventEmitter<any> = new EventEmitter<any>();
 
@@ -50,6 +55,15 @@ export class TableComponent implements OnInit, AfterViewInit {
   @Input() set tableData(data: any[]) {
     this.setTableDataSource(data);
   }
+
+  //icons
+  faPlus = faPlus;
+  faClone = faClone;
+  faTrashCan = faTrashCan;
+  faFileExcel = faFileExcel;
+
+  //Table Header
+  headerClass: string = "lt-purple-header";
 
   //hide non-priority rows
   nonPriorityTD: string = 'd-none d-md-table-cell align-middle';
@@ -69,6 +83,29 @@ export class TableComponent implements OnInit, AfterViewInit {
       this.displayedColumns = [this.rowActionIcon, ...columnNames];
     } else {
       this.displayedColumns = columnNames;
+    }
+    switch (this.colorTheme){
+      case "purple":
+        this.headerClass= "purple-header";
+        break;
+      case "lt-purple":
+        this.headerClass= "bg-purple";
+        break;
+      case "green" :
+        this.headerClass = "green-header";
+        break;
+      case "dark" :
+        this.headerClass = "dark-header";
+        break;
+      case "red" :
+        this.headerClass = "red-header";
+        break;
+      case "lt-red" :
+        this.headerClass = "lt-red-header";
+        break;
+      default:
+        this.headerClass = "";
+        break;
     }
   }
 

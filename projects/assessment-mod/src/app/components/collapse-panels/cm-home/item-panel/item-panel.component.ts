@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {faChevronDown, faTable } from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-import {CardNavComponent} from "../../../reusable/card-nav/card-nav.component";
 import {cardList} from "../../data/panel-options-interface";
 import {AssessmentTableComponent} from "../../../reusable/tables/assessment-table/assessment-table.component";
+import {AssessmentCardComponent} from "./assessment-card-nav/assessment-card.component";
 
 @Component({
   selector: 'app-item-panel',
   standalone: true,
-    imports: [CommonModule, FontAwesomeModule, CardNavComponent, AssessmentTableComponent],
+    imports: [CommonModule, FontAwesomeModule, AssessmentCardComponent, AssessmentTableComponent],
   templateUrl: './item-panel.component.html',
   styleUrls: ['./item-panel.component.css']
 })
@@ -27,33 +27,12 @@ export class ItemPanelComponent {
         cardID : "assessments01",
         tabText : "Assessments",
         cardTitle : "Assessments",
-        cardText : "Create, view, and update Assessments.",
+        cardText : "Here is where you can create, clone and delete assessments.  Double click to open or edit an assessment.",
         iconColorClass : "text-purple",
         firstCardOnly: "show active",
         firstLinkOnly: "active"
-      },
-      {
-        cardID : "ATFP01",
-        tabText : "ATFP Assessments",
-        cardTitle : "ATFP Assessments",
-        cardText : "Create, view, and update Assessments.",
-        iconColorClass : "text-purple",
-        firstCardOnly: "",
-        firstLinkOnly: ""
       }
     ]
-  }
-
-  createNewAction(params:any){
-    console.log('Create New Entry Button Clicked with parameter passed = ' + params);
-  }
-
-  cloneNewAction(params:any){
-    console.log('Clone New Button Clicked with parameter passed = ' + params);
-  }
-
-  deleteSelectedAction(params:any){
-    console.log('Delete Selection Button Clicked with parameter passed = ' + params);
   }
 
   ngOnInit() :void{

@@ -2,11 +2,12 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import { faChevronDown, faClone, faPlus, faTable, faTasks, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import {AssessmentTableComponent} from "../../../../reusable/tables/assessment-table/assessment-table.component";
 
 @Component({
   selector: 'assessment-card-nav',
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, AssessmentTableComponent],
   templateUrl: './assessment-card.component.html',
   styleUrls: ['./assessment-card.component.css']
 })

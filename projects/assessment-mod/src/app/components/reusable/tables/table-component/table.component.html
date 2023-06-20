@@ -1,19 +1,45 @@
 <ng-container>
+  <!--CRUD Buttons-->
+  <div class="row mb-3">
+    <div class="col-12 d-flex flex-wrap">
+      <div class="col-auto">
+        <button class="btn btn-purple-fill px-2 me-2 mb-2">
+          <fa-icon [icon]="faPlus" class="me-2"></fa-icon> Create New
+        </button>
+      </div>
+      <div class="col-auto">
+        <button class="btn btn-purple-fill px-2 me-2 mb-2" >
+          <fa-icon [icon]="faClone" class="me-2"></fa-icon> Copy Selected
+        </button>
+      </div>
+      <div class="col-auto">
+        <button class="btn btn-red px-2 mb-2">
+          <fa-icon [icon]="faTrashCan" class="me-2"></fa-icon> Delete Selected
+        </button>
+      </div>
+    </div>
+
+  </div>
 
   <!-- Filter -->
-  <ng-container *ngIf="isFilterable" [matColumnDef]="this.rowActionIcon">
-    <mat-form-field>
-      <mat-label>Filter</mat-label>
-      <input matInput (keyup)="applyFilter($event)" placeholder="filter">
-    </mat-form-field>
-  </ng-container>
+  <div class="row border-top pt-2">
+    <div class="col-auto mb-2">
+      <ng-container *ngIf="isFilterable" [matColumnDef]="this.rowActionIcon">
+        <mat-form-field>
+          <mat-label>Filter</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="filter">
+        </mat-form-field>
+      </ng-container>
+    </div>
+  </div>
+
   <div class="table-responsive">
   <!-- Table -->
-  <table class="table table-striped table-hover table-sm" mat-table [dataSource]="tableDataSource" matSort (matSortChange)="sortTable($event)">
+  <table class="table table-striped table-bordered border-light table-hover table-sm" mat-table [dataSource]="tableDataSource" matSort (matSortChange)="sortTable($event)">
 
     <!-- action column -->
     <ng-container *ngIf="rowActionIcon?.length" [matColumnDef]="rowActionIcon">
-      <th mat-header-cell class="align-middle ps-3" *matHeaderCellDef>Info</th>
+      <th mat-header-cell class="align-middle ps-3 {{headerClass}}" *matHeaderCellDef>Info</th>
       <td mat-cell [ngClass]="priorityTD" *matCellDef="let element" [id]="rowActionIcon" (click)="emitRowAction(element)">
         <button data-bs-toggle="modal" data-bs-target="#tableModal" class="btn btn-link align-middle">
           <mat-icon>{{rowActionIcon}}</mat-icon>
@@ -24,14 +50,14 @@
 
       <!-- if sortable column header -->
       <ng-container *ngIf="tableColumn.isSortable; else notSortable">
-        <th mat-header-cell [ngClass]="tableColumn.priority ? priorityTD : nonPriorityTD" *matHeaderCellDef [mat-sort-header]="tableColumn.name"
+        <th mat-header-cell [ngClass]="tableColumn.priority ? priorityTD + ' ' + headerClass : nonPriorityTD + ' ' + headerClass" *matHeaderCellDef [mat-sort-header]="tableColumn.name"
             [arrowPosition]="tableColumn.position === 'right' ? 'before' : 'after'">
           {{tableColumn.name}}
         </th>
       </ng-container>
       <!-- else not sortable -->
       <ng-template #notSortable>
-        <th mat-header-cell [ngClass]="tableColumn.priority ? priorityTD : nonPriorityTD" *matHeaderCellDef [class.text-right]="tableColumn.position == 'right'">
+        <th mat-header-cell [ngClass]="tableColumn.priority ? priorityTD + ' ' + headerClass : nonPriorityTD + ' ' + headerClass" *matHeaderCellDef [class.text-right]="tableColumn.position == 'right'">
           {{tableColumn.name}}
         </th>
       </ng-template>
@@ -61,11 +87,19 @@
   </table>
   </div>
   <!-- Pagination -->
-  <mat-paginator *ngIf="isPageable"
-                 [pageSizeOptions]="paginationSizes"
-                 [pageSize]="defaultPageSize"
-                 showFirstLastButtons>
-  </mat-paginator>
+  <div class="row">
+    <div class="col-md-3 col-lg-2 col-12">
+      <button class="btn btn-link"><fa-icon [icon]="faFileExcel" class="text-decoration-none me-2"></fa-icon>Export</button>
+    </div>
+    <div class="col-md-9 col-lg-10 col--12">
+      <mat-paginator *ngIf="isPageable"
+                     [pageSizeOptions]="paginationSizes"
+                     [pageSize]="defaultPageSize"
+                     showFirstLastButtons>
+      </mat-paginator>
+    </div>
+  </div>
+
 
 
 </ng-container>

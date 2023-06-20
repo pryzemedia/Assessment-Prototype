@@ -17,7 +17,7 @@ import {PieChartPanelComponent} from "../../../reusable/chart-panel/pie-chart-pa
   templateUrl: './scope-panel.component.html',
   styleUrls: ['./scope-panel.component.css']
 })
-export class ScopePanelComponent {
+export class ScopePanelComponent implements OnInit{
   faChevronDown = faChevronDown;
 
   reportList: reportList[] = [];
@@ -178,5 +178,6 @@ export class ScopePanelComponent {
 
   ngOnInit(): void{
     this.initReportList();
+
   }
 }

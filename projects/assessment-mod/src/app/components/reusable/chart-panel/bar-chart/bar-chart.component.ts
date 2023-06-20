@@ -1,4 +1,4 @@
-import {Component, Input, ViewChild, Output, EventEmitter} from '@angular/core';
+import {Component, Input, ViewChild, Output, EventEmitter, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {ChartConfiguration, ChartData, ChartDataset, ChartEvent, ChartType} from "chart.js";
 import {BaseChartDirective, NgChartsModule} from "ng2-charts";
@@ -16,7 +16,7 @@ import DataLabelsPlugin from 'chartjs-plugin-datalabels';
   templateUrl: './bar-chart.component.html',
   styleUrls: ['./bar-chart.component.css']
 })
-export class BarChartComponent {
+export class BarChartComponent implements OnInit{
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
 
   faChartBar = faChartBar;

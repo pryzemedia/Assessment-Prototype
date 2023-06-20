@@ -35,7 +35,8 @@
     </div> <!--reportDataID -->
 
     <div class="card-body tab-content" id="myTabContent" >
-      <div *ngFor="let cardItem of dynamicContent" class="tab-pane fade {{cardItem.firstCardOnly}}" id="{{cardItem.cardID}}" role="tabpanel" [attr.aria-labelledby] ="cardItem.cardID + '-tab'">
+      <div *ngFor="let cardItem of dynamicContent" class="tab-pane fade {{cardItem.firstCardOnly}}"
+           id="{{cardItem.cardID}}" role="tabpanel" [attr.aria-labelledby] ="cardItem.cardID + '-tab'">
         <div class="row d-flex">
           <div class="col-auto">
             <h3 class="my-2">
@@ -49,10 +50,15 @@
             <div class="form-check form-switch">
               <input class="form-check-input" type="checkbox" role="switch" id="{{cardItem.cardID}}Switch">
               <label class="form-check-label" for="{{cardItem.cardID}}Switch">Show Inactive</label>
+
             </div>
           </div>
         </div>
-
+        <div class="row">
+          <div class="col">
+            <app-assessment-table></app-assessment-table>
+          </div>
+        </div>
 
 
       </div> <!-- assessments -->

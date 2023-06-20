@@ -1,10 +1,9 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {Assessments} from "./assessments";
 import {TableColumn} from "../table-component/TableColumns";
 import {Sort} from "@angular/material/sort";
 import {TableComponent} from "../table-component/table.component";
-//import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {TableModalComponent} from "../table-component/table-modal/table-modal.component";
 
 
@@ -60,24 +59,26 @@ export class AssessmentTableComponent implements OnInit {
   }
 
 
+  //table button actions for the Assessment Table Component
+  createNewAction(params:any){
+    console.log('Create New Entry Button Clicked with parameter passed = ' + params);
+  }
+
+  cloneNewAction(params:any){
+    console.log('Clone New Button Clicked with parameter passed = ' + params);
+  }
+
+  deleteSelectedAction(params:any){
+    console.log('Delete Selection Button Clicked with parameter passed = ' + params);
+  }
+
   ngOnInit(): void{
     this.initializeColumns();
     this.assessmentData = this.getAssessments();
   }
 
-  ngAfterViewInit(){
-
-  }
-
   initializeColumns(): void {
     this.assessmentTableColumns = [
-      /*{
-        name: 'Info',
-        dataKey: 'information',
-        position: 'left',
-        isSortable: true,
-        priority: true
-      },*/
       {
         name: 'ID',
         dataKey: 'id',
@@ -91,6 +92,13 @@ export class AssessmentTableComponent implements OnInit {
         position: 'left',
         isSortable: true,
         priority: true
+      },
+      {
+        name: 'Node',
+        dataKey: 'node',
+        position: 'left',
+        isSortable: true,
+        priority: false
       },
       {
         name: 'Created by',
@@ -135,6 +143,7 @@ export class AssessmentTableComponent implements OnInit {
       {
         id: 1234,
         name: "Building 00102012",
+        node: "Node A",
         link: "#",
         createdBy: "Chris Jones",
         status: "Data Collection",
@@ -145,6 +154,7 @@ export class AssessmentTableComponent implements OnInit {
       {
         id: 3245,
         name: "Bus Terminal 34345",
+        node: "Node B",
         link: "#",
         createdBy: "Chris Jones",
         status: "Locked",
@@ -155,6 +165,7 @@ export class AssessmentTableComponent implements OnInit {
       {
         id: 3223,
         name: "Parking Lot 34324",
+        node: "Node 22",
         link: "#",
         createdBy: "Marnita Framm",
         status: "Locked",
@@ -163,8 +174,9 @@ export class AssessmentTableComponent implements OnInit {
         nextDue: "03/02/2023"
       },
       {
-        id: 1234,
+        id: 3223,
         name: "Building 00102012",
+        node: "Node 4A",
         link: "#",
         createdBy: "Chris Jones",
         status: "Data Collection",
@@ -173,8 +185,9 @@ export class AssessmentTableComponent implements OnInit {
         nextDue: "01/02/2022"
       },
       {
-        id: 1234,
-        name: "Building 00102012",
+        id: 1213,
+        name: "\tMaintenance Facility 92383",
+        node: "Node 113A",
         link: "#",
         createdBy: "Chris Jones",
         status: "Data Collection",
@@ -183,8 +196,9 @@ export class AssessmentTableComponent implements OnInit {
         nextDue: "01/02/2022"
       },
       {
-        id: 1234,
-        name: "Building 00102012",
+        id: 1453,
+        name: "Corporate Building 5",
+        node: "Node F",
         link: "#",
         createdBy: "Chris Jones",
         status: "Data Collection",
@@ -193,8 +207,9 @@ export class AssessmentTableComponent implements OnInit {
         nextDue: "01/02/2022"
       },
       {
-        id: 1234,
-        name: "Building 00102012",
+        id: 2234,
+        name: "Bus 201",
+        node: "Node D",
         link: "#",
         createdBy: "Chris Jones",
         status: "Data Collection",
@@ -203,8 +218,9 @@ export class AssessmentTableComponent implements OnInit {
         nextDue: "01/02/2022"
       },
       {
-        id: 1234,
+        id: 2334,
         name: "Building 00102012",
+        node: "Node AA",
         link: "#",
         createdBy: "Chris Jones",
         status: "Data Collection",
@@ -213,8 +229,9 @@ export class AssessmentTableComponent implements OnInit {
         nextDue: "01/02/2022"
       },
       {
-        id: 1234,
+        id: 2634,
         name: "Building 00102012",
+        node: "Node 1B",
         link: "#",
         createdBy: "Chris Jones",
         status: "Data Collection",
@@ -223,8 +240,9 @@ export class AssessmentTableComponent implements OnInit {
         nextDue: "01/02/2022"
       },
       {
-        id: 1234,
+        id: 7534,
         name: "Building 00102012",
+        node: "Node 123",
         link: "#",
         createdBy: "Chris Jones",
         status: "Data Collection",
@@ -233,8 +251,9 @@ export class AssessmentTableComponent implements OnInit {
         nextDue: "01/02/2022"
       },
       {
-        id: 1234,
+        id: 1434,
         name: "Building 00102012",
+        node: "Node CC",
         link: "#",
         createdBy: "Chris Jones",
         status: "Data Collection",
@@ -243,8 +262,9 @@ export class AssessmentTableComponent implements OnInit {
         nextDue: "01/02/2022"
       },
       {
-        id: 1234,
+        id: 1634,
         name: "Building 00102012",
+        node: "Node DD",
         link: "#",
         createdBy: "Chris Jones",
         status: "Data Collection",

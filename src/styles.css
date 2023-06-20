@@ -233,14 +233,21 @@ a:hover.lt-blue, a:focus.lt-blue{
   color: #154f7e;
 }
 .mat-mdc-header-cell{
-  color: #154f7e;
+  color: #333333;
   font-weight: bold;
+
 }
 
 .mat-sort-header-arrow {
-  /*color: #154f7e;
-  opacity: 1;*/
+  color: #154f7e;
+  opacity: 1;/**/
 }
+
+.mat-mdc-table .mdc-data-table__header-row {
+  height: auto;
+  border-bottom: #000000 2px solid;
+}
+
 .mat-mdc-dialog-container{
   padding: 0 !important;
 }
@@ -435,6 +442,9 @@ th[sortable] {
 }
 .bg-lt-grey:hover{
   background-color: #B3C9FF;
+}
+.bg-purple{
+  background: #BBAEE0 !important;
 }
 
 .btn-green-fill:hover{
