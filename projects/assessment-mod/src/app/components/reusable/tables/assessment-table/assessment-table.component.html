@@ -1,4 +1,9 @@
+<app-button-grouping
+  [buttonList]="crudButtons"
+  (btn_Action)="crudButtonsAction($event)"
+>
 
+</app-button-grouping>
 
 <app-custom-table [tableData]="assessmentData"
                   [tableColumns]="assessmentTableColumns"

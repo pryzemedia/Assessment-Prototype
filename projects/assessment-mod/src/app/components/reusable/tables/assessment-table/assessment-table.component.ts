@@ -5,12 +5,14 @@ import {TableColumn} from "../table-component/TableColumns";
 import {Sort} from "@angular/material/sort";
 import {TableComponent} from "../table-component/table.component";
 import {TableModalComponent} from "../table-component/table-modal/table-modal.component";
+import {buttonList} from "../../../collapse-panels/data/panel-options-interface";
+import {ButtonGroupingComponent} from "../../buttons/button-grouping/button-grouping.component";
 
 
 @Component({
   selector: 'app-assessment-table',
   standalone: true,
-  imports: [CommonModule, TableComponent, TableModalComponent],
+  imports: [CommonModule, TableComponent, TableModalComponent, ButtonGroupingComponent],
   templateUrl: './assessment-table.component.html',
   styleUrls: ['./assessment-table.component.css']
 })
@@ -22,6 +24,7 @@ export class AssessmentTableComponent implements OnInit {
   //current assessment wanted to use a different var then selectedAssessment
   public cAssessment: Assessments[] = [];
 
+  crudButtons: buttonList[] = [];
 
   constructor(
     //private _NgbModal: NgbModal
@@ -59,6 +62,11 @@ export class AssessmentTableComponent implements OnInit {
   }
 
 
+  crudButtonsAction(params:any){
+    let clickedBtn: buttonList = params as buttonList;
+    console.log('CRUD Button Clicked with parameter passed = ' + clickedBtn.btnText);
+  }
+
   //table button actions for the Assessment Table Component
   createNewAction(params:any){
     console.log('Create New Entry Button Clicked with parameter passed = ' + params);
@@ -75,6 +83,34 @@ export class AssessmentTableComponent implements OnInit {
   ngOnInit(): void{
     this.initializeColumns();
     this.assessmentData = this.getAssessments();
+    this.initBtnData();
+  }
+
+  initBtnData() {
+
+    this.crudButtons = [
+      {
+        icon: "add",
+        btnColor: "btn-purple-fill",
+        btnClass: "px-2 me-2 mb-2 d-flex align-items-center",
+        link: "",
+        btnText: "Create New"
+      },
+      {
+        icon: "library_add",
+        btnColor: "btn-purple-fill",
+        btnClass: "px-2 me-2 mb-2 d-flex align-items-center",
+        link: "",
+        btnText: "Copy Selected"
+      },
+      {
+        icon: "delete",
+        btnColor: "btn-red",
+        btnClass: "px-2 mb-2 d-flex align-items-center",
+        link: "",
+        btnText: "Delete Selected"
+      }
+    ]
   }
 
   initializeColumns(): void {

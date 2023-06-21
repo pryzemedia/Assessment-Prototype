@@ -76,7 +76,6 @@ export class TableComponent implements OnInit, AfterViewInit {
 
   constructor() {}
 
-
   ngOnInit(): void {
     const columnNames = this.tableColumns.map((tableColumn: TableColumn) => tableColumn.name);
     if (this.rowActionIcon) {
@@ -84,6 +83,7 @@ export class TableComponent implements OnInit, AfterViewInit {
     } else {
       this.displayedColumns = columnNames;
     }
+
     switch (this.colorTheme){
       case "purple":
         this.headerClass= "purple-header";
