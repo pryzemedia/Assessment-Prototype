@@ -134,7 +134,7 @@ export class AssessmentTableComponent implements OnInit {
         dataKey: 'node',
         position: 'left',
         isSortable: true,
-        priority: false
+        priority: true
       },
       {
         name: 'Created by',
@@ -143,7 +143,7 @@ export class AssessmentTableComponent implements OnInit {
         isSortable: true,
         priority: true
       },
-      {
+      /*{
         name: 'Status',
         dataKey: 'status',
         position: 'left',
@@ -156,7 +156,7 @@ export class AssessmentTableComponent implements OnInit {
         position: 'left',
         isSortable: true,
         priority: false
-      },
+      },*/
       {
         name: 'Last Updated',
         dataKey: 'lastUpdated',
