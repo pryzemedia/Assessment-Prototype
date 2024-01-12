@@ -1,124 +1,393 @@
+<div class="container-fluid">
 <div class="row m-3">
   <div class="col">
-    <div class="card">
+    <!--<div class="card">
       <div class="card-header sms-dark-header">
         <a data-bs-toggle="collapse" href="#collapse-1" role="button" aria-expanded="false"
            aria-controls="collapse-1" class="d-flex justify-content-between">
           <span>Select Location / Scope</span> <fa-icon [icon]="faChevronDown"></fa-icon>
         </a>
-      </div>
-      <div class="category-bg collapse show" id="collapse-1" style="">
+      </div> -->
+    <collapse-panel
+      [toggleOn]="false"
+      [disableToggle]="true"
+      [matHeaderIcon]="''"
+      [headerClass]="'sms-dark-header'"
+      [collapseClass]="'category-bg'"
+      [headerLabel]="'Select Location / Scope'"
+      [expandID]="'collapse-1'">
+
+      <div class="container-fluid drop-area" #section1="cdkDropList" cdkDropList [cdkDropListData]="componentsList1"
+           [cdkDropListConnectedTo]="[section2]"
+           (cdkDropListDropped)="onDrop($event, 'section1')">
         <div class="row">
-          <div class="col-md-12 col-xl-4 mb-2">
-            <app-hierarchy-panel></app-hierarchy-panel>
-            <app-generic-panel
-              [headerText]="'Reports'"
-              [colorTheme]="'blue'"
-              [cardID]="'detailHeader01'"
-              [typeOfContent]="'list'"
-              [dynamicContent]="reportList"
-              [buttons]="true"
-              [buttonList]="reportButtons"
-              (btn1_Action)="reportsBtn1Action($event)"
+          <!-- ||  -->
+          <div *ngFor="let component of componentsList1; index as i" cdkDrag [class]="components1[i].columnClass + ' drag-component'">
+            <div class="custom-placeholder col-lg-6" *cdkDragPlaceholder></div>
+            <div class="d-flex align-items-center justify-content-end">
+              <div class="p1 bg-white">
+                <select [(ngModel)]="components1[i].columnClass" (change)="onColumnClassChange()">
+                  <option value="col">col</option>
+                  <option value="col-lg-2">col-2</option>
+                  <option value="col-lg-4">col-4</option>
+                  <option value="col-lg-6">col-6</option>
+                  <option value="col-lg-8">col-8</option>
+                  <option value="col-lg-10">col-10</option>
+                  <option value="col-lg-12">col-12</option>
+                </select>
+              </div>
 
-            >
-            </app-generic-panel>
-          </div>
+              <div class="p-1 bg-white drop-handle" cdkDragHandle>
+                <mat-icon fontIcon="open_with"></mat-icon>
+              </div>
 
-          <div class="col-12 col-md-6 col-xl-4 mb-2">
-            <div class="row mb-2">
-              <div class="col">
-                <app-bar-chart
-                  [headerText]="'Assessments'"
-                  [colorTheme]="'blue'"
-                  [cardID]="'assessNumbers01'"
-                  [inputChartData]="setBarChartData"
-                  [inputChartLabels]="setBarChartLabels"
-                  [includeLegend]="false"
-                  [includeChartTitle] = "true"
-                  [chartTitle]="'2023 Assessments by Month'"
-                  [horizontalBar] = "false"
-                  [buttons]="true"
-                  [buttonList]="programButtons"
-                  (btn1_Action)="programBtn1Action($event)"
+            </div>
+
+            <div [class]="'drag-container'">
+              <ng-container [ngSwitch]="component">
+                <app-hierarchy-panel *ngSwitchCase="'app-hierarchy panel'"></app-hierarchy-panel>
+                <app-generic-panel *ngSwitchCase="'reports-generic panel'"
+                                   [headerText]="'Reports'"
+                                   [colorTheme]="'blue'"
+                                   [cardID]="'detailHeader01'"
+                                   [typeOfContent]="'list'"
+                                   [dynamicContent]="reportList"
+                                   [buttons]="true"
+                                   [buttonList]="reportButtons"
+                                   (btn1_Action)="reportsBtn1Action($event)"
+
+                >
+                </app-generic-panel>
+                <app-bar-chart *ngSwitchCase="'assessment-bar-chart'"
+                               [headerText]="'Assessments'"
+                               [colorTheme]="'blue'"
+                               [cardID]="'assessNumbers01'"
+                               [inputChartData]="setBarChartData"
+                               [inputChartLabels]="setBarChartLabels"
+                               [includeLegend]="false"
+                               [includeChartTitle]="true"
+                               [chartTitle]="'2023 Assessments by Month'"
+                               [horizontalBar]="false"
+                               [buttons]="true"
+                               [buttonList]="programButtons"
+                               (btn1_Action)="programBtn1Action($event)"
 
                 >
                 </app-bar-chart>
-              </div>
-            </div>
-
-            <div class="row mb-2">
-              <div class="col">
-                <app-pie-chart
-                  [headerText]="'Assessment Status'"
-                  [colorTheme]="'blue'"
-                  [cardID]="'assessStatus01'"
-                  [inputChartData]="setPieChartData_01"
-                  [inputChartLabels]="setPieChartLabels_01"
-                  [includeLegend]="true"
-                  [includeChartTitle] = "true"
-                  [chartTitle]="'Latest Assessment Status'"
-                  [horizontalBar] = "false"
-                  [buttons]="true"
-                  [buttonList]="statusButtons"
-                  (btn1_Action)="statusBtn1Action($event)"
+                <app-pie-chart *ngSwitchCase="'assessment-pie-chart'"
+                               [headerText]="'Assessment Status'"
+                               [colorTheme]="'blue'"
+                               [cardID]="'assessStatus01'"
+                               [inputChartData]="setPieChartData_01"
+                               [inputChartLabels]="setPieChartLabels_01"
+                               [includeLegend]="true"
+                               [includeChartTitle]="true"
+                               [chartTitle]="'Latest Assessment Status'"
+                               [horizontalBar]="false"
+                               [buttons]="true"
+                               [buttonList]="statusButtons"
+                               (btn1_Action)="statusBtn1Action($event)"
 
                 >
                 </app-pie-chart>
-              </div>
-            </div>
-
-          </div><!-- next -->
-
-          <div class="col-12 col-md-6 col-xl-4 mb-2">
-            <div class="row mb-2">
-              <div class="col">
-                <app-pie-chart
-                  [headerText]="'Compliance'"
-                  [colorTheme]="'blue'"
-                  [cardID]="'compliance01'"
-                  [inputChartData]="setPieChartData_02"
-                  [inputChartLabels]="setPiChartLabels_02"
-                  [includeLegend]="true"
-                  [includeChartTitle] = "true"
-                  [chartTitle]="'Top Non-complaint Items'"
-                  [horizontalBar] = "false"
-                  [buttons]="true"
-                  [buttonList]="statusButtons"
-                  (btn1_Action)="complianceBtn1Action($event)"
+                <app-pie-chart *ngSwitchCase="'compliance-pie-chart'"
+                               [headerText]="'Compliance'"
+                               [colorTheme]="'blue'"
+                               [cardID]="'compliance01'"
+                               [inputChartData]="setPieChartData_02"
+                               [inputChartLabels]="setPiChartLabels_02"
+                               [includeLegend]="true"
+                               [includeChartTitle]="true"
+                               [chartTitle]="'Top Non-complaint Items'"
+                               [horizontalBar]="false"
+                               [buttons]="true"
+                               [buttonList]="statusButtons"
+                               (btn1_Action)="complianceBtn1Action($event)"
 
                 >
                 </app-pie-chart>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <app-bar-chart
-                  [headerText]="'Risk'"
-                  [colorTheme]="'blue'"
-                  [cardID]="'risk01'"
-                  [inputChartData]="setBarChartData_02"
-                  [inputChartLabels]="setBarChartLabels_02"
-                  [includeLegend]="false"
-                  [includeChartTitle] = "true"
-                  [chartTitle]="'Highest Risk Assets & Units'"
-                  [horizontalBar] = "true"
-                  [buttons]="true"
-                  [buttonList]="programButtons"
-                  (btn1_Action)="riskBtn1Action($event)"
+                <app-bar-chart *ngSwitchCase="'risk-bar-chart'"
+                               [headerText]="'Risk'"
+                               [colorTheme]="'blue'"
+                               [cardID]="'risk01'"
+                               [inputChartData]="setBarChartData_02"
+                               [inputChartLabels]="setBarChartLabels_02"
+                               [includeLegend]="false"
+                               [includeChartTitle]="true"
+                               [chartTitle]="'Highest Risk Assets & Units'"
+                               [horizontalBar]="true"
+                               [buttons]="true"
+                               [buttonList]="programButtons"
+                               (btn1_Action)="riskBtn1Action($event)"
 
                 >
                 </app-bar-chart>
-              </div>
+
+                <assessment-card-nav *ngSwitchCase="'assessment-card-table'"
+                                     [headerText]="'Completed / Started Items'"
+                                     [colorTheme]="'red'"
+                                     [cardID]="'assessTable01'"
+                                     [buttons]="false"
+                                     [dynamicContent]="setCardList"
+
+                >
+                </assessment-card-nav>
+
+              </ng-container>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+      <!--<div class="row">
+        <div class="col-md-12 col-xl-4 mb-2">
+          <app-hierarchy-panel></app-hierarchy-panel>
+          <app-generic-panel
+            [headerText]="'Reports'"
+            [colorTheme]="'blue'"
+            [cardID]="'detailHeader01'"
+            [typeOfContent]="'list'"
+            [dynamicContent]="reportList"
+            [buttons]="true"
+            [buttonList]="reportButtons"
+            (btn1_Action)="reportsBtn1Action($event)"
+
+          >
+          </app-generic-panel>
+        </div>
+
+        <div class="col-12 col-md-6 col-xl-4 mb-2">
+          <div class="row mb-2">
+            <div class="col">
+              <app-bar-chart
+                [headerText]="'Assessments'"
+                [colorTheme]="'blue'"
+                [cardID]="'assessNumbers01'"
+                [inputChartData]="setBarChartData"
+                [inputChartLabels]="setBarChartLabels"
+                [includeLegend]="false"
+                [includeChartTitle] = "true"
+                [chartTitle]="'2023 Assessments by Month'"
+                [horizontalBar] = "false"
+                [buttons]="true"
+                [buttonList]="programButtons"
+                (btn1_Action)="programBtn1Action($event)"
+
+              >
+              </app-bar-chart>
             </div>
           </div>
 
+          <div class="row mb-2">
+            <div class="col">
+              <app-pie-chart
+                [headerText]="'Assessment Status'"
+                [colorTheme]="'blue'"
+                [cardID]="'assessStatus01'"
+                [inputChartData]="setPieChartData_01"
+                [inputChartLabels]="setPieChartLabels_01"
+                [includeLegend]="true"
+                [includeChartTitle] = "true"
+                [chartTitle]="'Latest Assessment Status'"
+                [horizontalBar] = "false"
+                [buttons]="true"
+                [buttonList]="statusButtons"
+                (btn1_Action)="statusBtn1Action($event)"
+
+              >
+              </app-pie-chart>
+            </div>
+          </div>
 
         </div>
 
+        <div class="col-12 col-md-6 col-xl-4 mb-2">
+          <div class="row mb-2">
+            <div class="col">
+              <app-pie-chart
+                [headerText]="'Compliance'"
+                [colorTheme]="'blue'"
+                [cardID]="'compliance01'"
+                [inputChartData]="setPieChartData_02"
+                [inputChartLabels]="setPiChartLabels_02"
+                [includeLegend]="true"
+                [includeChartTitle] = "true"
+                [chartTitle]="'Top Non-complaint Items'"
+                [horizontalBar] = "false"
+                [buttons]="true"
+                [buttonList]="statusButtons"
+                (btn1_Action)="complianceBtn1Action($event)"
 
-      </div>
-    </div>
+              >
+              </app-pie-chart>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <app-bar-chart
+                [headerText]="'Risk'"
+                [colorTheme]="'blue'"
+                [cardID]="'risk01'"
+                [inputChartData]="setBarChartData_02"
+                [inputChartLabels]="setBarChartLabels_02"
+                [includeLegend]="false"
+                [includeChartTitle] = "true"
+                [chartTitle]="'Highest Risk Assets & Units'"
+                [horizontalBar] = "true"
+                [buttons]="true"
+                [buttonList]="programButtons"
+                (btn1_Action)="riskBtn1Action($event)"
+
+              >
+              </app-bar-chart>
+            </div>
+          </div>
+        </div>
+
+
+      </div>-->
+
+
+      <!--</div>-->
+    </collapse-panel>
+    <!--</div> -->
   </div>
+</div>
+
+
+<div class="row m-3">
+  <div class="col">
+    <collapse-panel
+      [toggleOn]="false"
+      [disableToggle]="true"
+      [matHeaderIcon]="''"
+      [headerClass]="'sms-dark-header'"
+      [collapseClass]="'category-bg'"
+      [headerLabel]="'View Items'"
+      [expandID]="'collapse-1'">
+
+      <div class="container-fluid drop-area" cdkDropList #section2="cdkDropList"  [cdkDropListData]="componentsList2"
+           [cdkDropListConnectedTo]="[section1]"
+           (cdkDropListDropped)="onDrop($event, 'section2')">
+        <div class="row">
+          <!-- || -->
+          <div *ngFor="let component of componentsList2; index as i" cdkDrag [class]="components2[i].columnClass +  ' drag-component'">
+            <div class="custom-placeholder col-lg-6" *cdkDragPlaceholder></div>
+            <div class="d-flex align-items-center justify-content-end">
+              <select [(ngModel)]="components2[i].columnClass" (change)="onColumnClassChange()">
+                <option value="col">col</option>
+                <option value="col-lg-2">col-2</option>
+                <option value="col-lg-4">col-4</option>
+                <option value="col-lg-6">col-6</option>
+                <option value="col-lg-8">col-8</option>
+                <option value="col-lg-10">col-10</option>
+                <option value="col-lg-12">col-12</option>
+              </select>
+              <div class="p-1 bg-white drop-handle" cdkDragHandle>
+                <mat-icon fontIcon="open_with"></mat-icon>
+              </div>
+            </div>
+
+            <div [class]="'drag-container'">
+              <ng-container [ngSwitch]="component">
+            <assessment-card-nav *ngSwitchCase="'assessment-card-table'"
+              [headerText]="'Completed / Started Items'"
+              [colorTheme]="'red'"
+              [cardID]="'assessTable01'"
+              [buttons]="false"
+              [dynamicContent]="setCardList"
+
+            >
+            </assessment-card-nav>
+
+                <app-generic-panel *ngSwitchCase="'reports-generic panel'"
+                                   [headerText]="'Reports'"
+                                   [colorTheme]="'blue'"
+                                   [cardID]="'detailHeader01'"
+                                   [typeOfContent]="'list'"
+                                   [dynamicContent]="reportList"
+                                   [buttons]="true"
+                                   [buttonList]="reportButtons"
+                                   (btn1_Action)="reportsBtn1Action($event)"
+
+                >
+                </app-generic-panel>
+                <app-bar-chart *ngSwitchCase="'assessment-bar-chart'"
+                               [headerText]="'Assessments'"
+                               [colorTheme]="'blue'"
+                               [cardID]="'assessNumbers01'"
+                               [inputChartData]="setBarChartData"
+                               [inputChartLabels]="setBarChartLabels"
+                               [includeLegend]="false"
+                               [includeChartTitle]="true"
+                               [chartTitle]="'2023 Assessments by Month'"
+                               [horizontalBar]="false"
+                               [buttons]="true"
+                               [buttonList]="programButtons"
+                               (btn1_Action)="programBtn1Action($event)"
+
+                >
+                </app-bar-chart>
+                <app-pie-chart *ngSwitchCase="'assessment-pie-chart'"
+                               [headerText]="'Assessment Status'"
+                               [colorTheme]="'blue'"
+                               [cardID]="'assessStatus01'"
+                               [inputChartData]="setPieChartData_01"
+                               [inputChartLabels]="setPieChartLabels_01"
+                               [includeLegend]="true"
+                               [includeChartTitle]="true"
+                               [chartTitle]="'Latest Assessment Status'"
+                               [horizontalBar]="false"
+                               [buttons]="true"
+                               [buttonList]="statusButtons"
+                               (btn1_Action)="statusBtn1Action($event)"
+
+                >
+                </app-pie-chart>
+                <app-pie-chart *ngSwitchCase="'compliance-pie-chart'"
+                               [headerText]="'Compliance'"
+                               [colorTheme]="'blue'"
+                               [cardID]="'compliance01'"
+                               [inputChartData]="setPieChartData_02"
+                               [inputChartLabels]="setPiChartLabels_02"
+                               [includeLegend]="true"
+                               [includeChartTitle]="true"
+                               [chartTitle]="'Top Non-complaint Items'"
+                               [horizontalBar]="false"
+                               [buttons]="true"
+                               [buttonList]="statusButtons"
+                               (btn1_Action)="complianceBtn1Action($event)"
+
+                >
+                </app-pie-chart>
+                <app-bar-chart *ngSwitchCase="'risk-bar-chart'"
+                               [headerText]="'Risk'"
+                               [colorTheme]="'blue'"
+                               [cardID]="'risk01'"
+                               [inputChartData]="setBarChartData_02"
+                               [inputChartLabels]="setBarChartLabels_02"
+                               [includeLegend]="false"
+                               [includeChartTitle]="true"
+                               [chartTitle]="'Highest Risk Assets & Units'"
+                               [horizontalBar]="true"
+                               [buttons]="true"
+                               [buttonList]="programButtons"
+                               (btn1_Action)="riskBtn1Action($event)"
+
+                >
+                </app-bar-chart>
+
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </collapse-panel>
+  </div>
+
+
+</div>
 </div>
