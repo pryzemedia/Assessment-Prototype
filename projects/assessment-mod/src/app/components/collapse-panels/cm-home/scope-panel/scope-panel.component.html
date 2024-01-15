@@ -23,7 +23,7 @@
         <div class="row">
           <!-- ||  -->
           <div *ngFor="let component of componentsList1; index as i" cdkDrag [class]="components1[i].columnClass + ' drag-component'">
-            <div class="custom-placeholder col-lg-6" *cdkDragPlaceholder></div>
+            <!--<div class="custom-placeholder" *cdkDragPlaceholder></div>-->
             <div class="d-flex align-items-center justify-content-end">
               <div class="p1 bg-white">
                 <select [(ngModel)]="components1[i].columnClass" (change)="onColumnClassChange()">
@@ -275,7 +275,7 @@
         <div class="row">
           <!-- || -->
           <div *ngFor="let component of componentsList2; index as i" cdkDrag [class]="components2[i].columnClass +  ' drag-component'">
-            <div class="custom-placeholder col-lg-6" *cdkDragPlaceholder></div>
+            <!--<div class="custom-placeholder" *cdkDragPlaceholder></div>-->
             <div class="d-flex align-items-center justify-content-end">
               <select [(ngModel)]="components2[i].columnClass" (change)="onColumnClassChange()">
                 <option value="col">col</option>
@@ -293,6 +293,7 @@
 
             <div [class]="'drag-container'">
               <ng-container [ngSwitch]="component">
+                <app-hierarchy-panel *ngSwitchCase="'app-hierarchy panel'"></app-hierarchy-panel>
             <assessment-card-nav *ngSwitchCase="'assessment-card-table'"
               [headerText]="'Completed / Started Items'"
               [colorTheme]="'red'"

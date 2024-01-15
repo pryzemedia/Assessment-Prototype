@@ -13,7 +13,6 @@ import {
   CdkDrag,
   CdkDragDrop,
   CdkDragHandle,
-  CdkDragPlaceholder,
   CdkDropList, CdkDropListGroup,
   moveItemInArray,
   transferArrayItem
@@ -44,8 +43,7 @@ export interface DragComponent {
     CdkDrag,
     CdkDragHandle,
     CdkDropList,
-    CdkDropListGroup,
-    CdkDragPlaceholder, MatIconModule],
+    CdkDropListGroup, MatIconModule],
   templateUrl: './scope-panel.component.html',
   styleUrls: ['./scope-panel.component.css']
 })
@@ -88,9 +86,11 @@ export class ScopePanelComponent implements OnInit{
   components2:DragComponent[] = [
     {type: 'assessment-card-table', columnClass: 'col'}
   ];
-
+  //Master list of DragComponents - Used to move components between components1 and components2
   allComponents:DragComponent[] = [...this.components1, ...this.components2]
 
+  //Drag and Drop component works with string arrays, This creates an instance of components1 and components2
+  //as a string array for the Material Component to work
   componentsList1:string[] = this.components1.map(component => component.type);
   componentsList2:string[] = this.components2.map(component2 => component2.type);
 
@@ -108,12 +108,7 @@ export class ScopePanelComponent implements OnInit{
         event.currentIndex
       );
       // Update components1 or components2 order based on section
-      /*if (section === 'section1') {
-        this.components1 = this.updateComponentsOrder(this.components1, this.componentsList1);
-      } else if (section === 'section2') {
-        this.components2 = this.updateComponentsOrder(this.components2, this.componentsList2);
-      }
-      console.log("event.container.data = " + event.container.data);*/
+
     } else {
       transferArrayItem(
         event.previousContainer.data,
@@ -123,17 +118,6 @@ export class ScopePanelComponent implements OnInit{
 
       );
 
-     //console.log("this.components1 = " + JSON.stringify(this.components1, null, 2));
-      //console.log("this.components2 = " + JSON.stringify(this.components2, null, 2));
-
-      // Update components1 and components2 order based on sections
-      /*if(section=="section2"){
-        this.components1 = this.updateComponentsOrder(this.components1, event.previousContainer.data);
-        this.components2 = this.updateComponentsOrder(this.components2, event.container.data);
-      }*/
-      //this.components1 = this.updateComponentsOrder(this.components1, this.componentsList1);
-      //this.components2 = this.updateComponentsOrder(this.components2, this.componentsList2);
-
     }
 
     this.updateComponents();
@@ -142,14 +126,6 @@ export class ScopePanelComponent implements OnInit{
     console.log("this.components2 = " + JSON.stringify(this.components2, null, 2));
     //console.log("this.components2 = " + JSON.stringify(this.components2, null, 2));
     console.log("section = " + section);
-    // Update components1 or components2 order based on section
-    /*if (section === 'section1') {
-      this.components1 = this.updateComponentsOrder(this.components1, this.componentsList1);
-      console.log("this.components1 = " + JSON.stringify(this.components1, null, 2));
-    } else if (section === 'section2') {
-      this.components2 = this.updateComponentsOrder(this.components2, this.componentsList2);
-      console.log("this.components2 = " + JSON.stringify(this.components2, null, 2));
-    }*/
 
   }
 
