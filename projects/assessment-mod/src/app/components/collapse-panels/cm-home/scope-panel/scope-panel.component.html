@@ -296,6 +296,7 @@
               <div [class]="'drag-container'">
                 <ng-container [ngSwitch]="component">
                   <app-hierarchy-panel *ngSwitchCase="'app-hierarchy panel'"></app-hierarchy-panel>
+
                   <assessment-card-nav *ngSwitchCase="'assessment-card-table'"
                                        [headerText]="'Completed / Started Items'"
                                        [colorTheme]="'red'"
